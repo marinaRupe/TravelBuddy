@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,15 +52,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mappings\ActivityMap.cs" />
+    <Compile Include="Mappings\CurrencyMap.cs" />
+    <Compile Include="Mappings\PreliminaryActivityMap.cs" />
+    <Compile Include="Mappings\TravelActivityMap.cs" />
+    <Compile Include="Mappings\TravelActivityWithCostMap.cs" />
+    <Compile Include="Mappings\TravelItemMap.cs" />
+    <Compile Include="Mappings\TravelMap.cs" />
+    <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TravelRepository.cs" />
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="SessionFactory.cs" />
+    <Compile Include="Repositories\TravelRepository.cs" />
+    <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">
       <Project>{3A7AF60B-4AE2-41E7-8797-33938AE0D5B1}</Project>
       <Name>TravelBuddy.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
