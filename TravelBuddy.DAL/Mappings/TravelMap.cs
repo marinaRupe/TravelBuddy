@@ -12,7 +12,7 @@ namespace TravelBuddy.DAL.Mappings
     {
         public TravelMap()
         {
-            Id(x => x.Id).GeneratedBy.Native();
+            Id(x => x.Id).GeneratedBy.Guid();
             Map(x => x.Name);
             Map(x => x.DateStart);
             Map(x => x.DateEnd);

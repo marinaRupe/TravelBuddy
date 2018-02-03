@@ -61,6 +61,7 @@
     <Compile Include="Mappings\TravelMap.cs" />
     <Compile Include="Mappings\UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CurrencyRepository.cs" />
     <Compile Include="SessionFactory.cs" />
     <Compile Include="Repositories\TravelRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

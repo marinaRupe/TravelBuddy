@@ -53,6 +53,7 @@
     <Compile Include="MoneyValue.cs" />
     <Compile Include="PreliminaryActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICurrencyRepository.cs" />
     <Compile Include="Repositories\ITravelRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Travel.cs" />

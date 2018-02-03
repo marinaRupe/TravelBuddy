@@ -12,7 +12,7 @@ namespace TravelBuddy.DAL.Mappings
     {
         public UserMap()
         {
-            Id(x => x.Id).GeneratedBy.Native();
+            Id(x => x.Id).GeneratedBy.Guid();
             Map(x => x.Username);
             Map(x => x.Email);
             Map(x => x.Password);

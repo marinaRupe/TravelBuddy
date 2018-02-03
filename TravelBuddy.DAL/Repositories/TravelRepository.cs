@@ -3,40 +3,42 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
+using NHibernate;
 using TravelBuddy.Models;
 using TravelBuddy.Models.Repositories;
 
-namespace TravelBuddy.DAL
+namespace TravelBuddy.DAL.Repositories
 {
     public class TravelRepository : ITravelRepository
     {
-        private static TravelRepository _instance;
-        private IList<Travel> _travels;
+        private readonly ISession _currentSession;
 
-        private TravelRepository()
+        private TravelRepository(ISession session)
         {
-            _travels = new List<Travel>();
+            _currentSession = session;
         }
-
-        public static TravelRepository GetInstance()
-        {
-            return _instance ?? (_instance = new TravelRepository());
-        }
-
-        public void Add(Travel travel)
-        {
-            _travels.Add(travel);
-        }
-
         public Travel GetTravel(Guid travelId)
         {
-            var item = _travels.FirstOrDefault(t => t.Id.Equals(travelId));
-            return item;
+            return _currentSession.Get<Travel>(travelId);
+        }
+
+        public void AddTravel(Travel travel)
+        {
+            _currentSession.Save(travel);
         }
 
         public void UpdateTravel(Travel travel)
         {
-            // Save
+            _currentSession.Update(travel);
+        }
+        public void DeleteTravel(Guid travelId)
+        {
+            var travel = _currentSession.Get<Travel>(travelId);
+
+            if (travel != null)
+            {
+                _currentSession.Delete(travel);
+            }
         }
 
         public void ToggleCompleted()
@@ -47,11 +49,6 @@ namespace TravelBuddy.DAL
         {
             var travel = GetTravel(travelId);
             travel.Archive();
-        }
-
-        public void Remove(Travel travel)
-        {
-            _travels.Remove(travel);
         }
     }
 }

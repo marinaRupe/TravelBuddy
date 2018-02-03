@@ -14,7 +14,7 @@ namespace TravelBuddy.DAL.Mappings
         {
             Id(x => x.Id).GeneratedBy.Guid();
             Map(x => x.Name);
-            Map(x => x.Shortcut);
+            Map(x => x.Shortcut).Unique();
         }
     }
 }

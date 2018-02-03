@@ -6,5 +6,9 @@ namespace TravelBuddy.Models.Repositories
 {
     public interface ITravelRepository
     {
+        Travel GetTravel(Guid travelId);
+        void AddTravel(Travel travel);
+        void UpdateTravel(Travel travel);
+        void DeleteTravel(Guid travelId);
     }
 }
