@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="ActivityRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj" />
   </ItemGroup>
 

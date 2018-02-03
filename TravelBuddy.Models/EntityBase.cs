@@ -19,11 +19,7 @@ namespace TravelBuddy.Models
 
         public bool Equals(EntityBase<TId> other)
         {
-            if (other == null)
-            {
-                return false;
-            }
-            return Id.Equals(other.Id);
+            return other != null && Id.Equals(other.Id);
         }
 
         public override bool Equals(object obj)

@@ -9,18 +9,19 @@ namespace TravelBuddy.Models
 {
     public class Travel : EntityBase<Guid>
     {
-        public string Name { get; set; }
-        public DateTime DateStart { get; set; }
-        public DateTime DateEnd { get; set; }
-        public string Description { get; set; }
-        public bool IsArchived { get; set; }
-        public double BudgetValue { get; set; }
-        public string BudgetCurrency { get; set; }
+        public virtual string Name { get; set; }
+        public virtual DateTime DateStart { get; set; }
+        public virtual DateTime DateEnd { get; set; }
+        public virtual string Description { get; set; }
+        public virtual bool IsArchived { get; set; }
+        public virtual double BudgetValue { get; set; }
+        public virtual string BudgetCurrency { get; set; }
 
-        public User Traveller { get; set; }
-        public IList<Activity> ActivityList { get; set; }
-        public IList<TravelActivityWithCost> CostList { get; set; }
-        public IList<PreliminaryActivity> PreliminaryList { get; set; }
+        public virtual User Traveller { get; set; }
+        public virtual IList<Activity> ActivityList { get; set; }
+        public virtual IList<TravelActivityWithCost> CostList { get; set; }
+        public virtual IList<PreliminaryActivity> PreliminaryActivityList { get; set; }
+        public virtual IList<ITravelItem> TravelItemList { get; set; }
 
         public Travel() : base(new Guid())
         {
@@ -35,7 +36,7 @@ namespace TravelBuddy.Models
             IsArchived = false;
         }
 
-        public TravelStatus GeTravelStatus()
+        public TravelStatus GetTravelStatus()
         {
             if (IsArchived) return TravelStatus.Archived;
             if (DateTime.Now < DateStart) return TravelStatus.Planned;
@@ -45,7 +46,7 @@ namespace TravelBuddy.Models
 
         public bool Archive()
         {
-            if (!GeTravelStatus().Equals(TravelStatus.Finished)) return false;
+            if (!GetTravelStatus().Equals(TravelStatus.Finished)) return false;
 
             IsArchived = true;
             return true;

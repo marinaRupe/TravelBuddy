@@ -7,14 +7,14 @@ namespace TravelBuddy.Models
 {
     public class TravelActivityWithCost : EntityBase<Guid>, ITravelActivity, ICostable
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public bool IsCompleted { get; set; }
-        public DateTime DateCompleted { get; set; }
-        public DateTime DueDate { get; set; }
-        public Location Location { get; set; }
-        public double Value { get; set; }
-        public string Currency { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Description { get; set; }
+        public virtual bool IsCompleted { get; set; }
+        public virtual DateTime? DateCompleted { get; set; }
+        public virtual DateTime? DueDate { get; set; }
+        public virtual Location Location { get; set; }
+        public virtual double Value { get; set; }
+        public virtual string Currency { get; set; }
 
         public TravelActivityWithCost() : base(new Guid())
         {
@@ -27,13 +27,10 @@ namespace TravelBuddy.Models
             Name = name;
         }
 
-        public bool MarkAsCompleted()
+        public void ToggleCompleted()
         {
-            if (!IsCompleted) return false;
-
-            IsCompleted = true;
-            DateCompleted = DateTime.Now;
-            return true;
+            IsCompleted = !IsCompleted;
+            DateCompleted = IsCompleted ? DateTime.Now : null as DateTime?;
         }
     }
 }

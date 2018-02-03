@@ -4,13 +4,12 @@ using System.Text;
 
 namespace TravelBuddy.Models.Interfaces
 {
-    public interface IActivity
+    public interface ITravelItem
     {
         string Name { get; set; }
         string Description { get; set; }
-        bool IsCompleted { get; set; }
-        DateTime? DateCompleted { get; set; }
-        DateTime? DueDate { get; set; }
-        void ToggleCompleted();
+        bool IsTaken { get; set; }
+        string Label { get; set; }
+        void ToggleTaken();
     }
 }

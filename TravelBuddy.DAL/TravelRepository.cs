@@ -8,10 +8,10 @@ using TravelBuddy.Models.Repositories;
 
 namespace TravelBuddy.DAL
 {
-    class TravelRepository : ITravelRepository
+    public class TravelRepository : ITravelRepository
     {
         private static TravelRepository _instance;
-        private List<Travel> _travels;
+        private IList<Travel> _travels;
 
         private TravelRepository()
         {
@@ -34,7 +34,12 @@ namespace TravelBuddy.DAL
             return item;
         }
 
-        public void UpdateTravel(Guid travelId)
+        public void UpdateTravel(Travel travel)
+        {
+            // Save
+        }
+
+        public void ToggleCompleted()
         {
         }
 
