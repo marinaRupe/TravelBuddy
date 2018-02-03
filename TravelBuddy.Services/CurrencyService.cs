@@ -1,7 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using TravelBuddy.Models;
+using TravelBuddy.Services.DataTransferObjects.Fixer;
 
 namespace TravelBuddy.Services
 {
@@ -10,7 +14,7 @@ namespace TravelBuddy.Services
         private const string API_ADDRESS = @"https://api.fixer.io";
         private static CurrencyService _instance;
 
-        private HttpClient _client;
+        private readonly HttpClient _client;
 
         private CurrencyService()
         {
@@ -18,17 +22,26 @@ namespace TravelBuddy.Services
             {
                 BaseAddress = new Uri(API_ADDRESS)
             };
+            _client.DefaultRequestHeaders.Accept.Clear();
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public CurrencyService GetInstance()
+        public static CurrencyService GetInstance()
         {
             _instance = _instance ?? new CurrencyService();
             return _instance;
         }
 
-        public IList<Currency> GetLatestCurrencyList()
+        public async Task<double> GetCurrencyRateAsync(DateTime atDate, string ofCurrencyShortcut, string toTargetCurrencyShortcut)
         {
-            return null;
+            var queryString = $"/{atDate.ToString("yyyy-MM-dd")}?base={toTargetCurrencyShortcut.ToUpper()}&symbols={ofCurrencyShortcut.ToUpper()}";
+            var response = await _client.GetAsync(queryString);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException();
+            }
+            var content = await response.Content.ReadAsAsync<ExchangeRatesObject>();
+            return content.Rates.Select(rate => rate.Value).First();
         }
     }
 }
