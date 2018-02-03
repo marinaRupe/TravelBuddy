@@ -22,12 +22,12 @@ namespace TravelBuddy.Models
         public virtual IList<PreliminaryActivity> PreliminaryActivityList { get; set; }
         public virtual IList<TravelItem> ItemList { get; set; }
 
-        public Travel() : base(new Guid())
+        public Travel() : base()
         {
             Description = "";
         }
 
-        public Travel(string name, DateTime dateStart, DateTime dateEnd) : base(new Guid())
+        public Travel(string name, DateTime dateStart, DateTime dateEnd) : this()
         {
             Name = name;
             DateStart = dateStart;
@@ -35,14 +35,14 @@ namespace TravelBuddy.Models
             IsArchived = false;
         }
 
-        public TravelStatus GetTravelStatus()
+        public virtual TravelStatus GetTravelStatus()
         {
             if (IsArchived) return TravelStatus.Archived;
             if (DateTime.Now < DateStart) return TravelStatus.Planned;
             return HasEnded() ? TravelStatus.Finished : TravelStatus.Active;
         }
 
-        public bool Archive()
+        public virtual bool Archive()
         {
             if (!GetTravelStatus().Equals(TravelStatus.Finished)) return false;
 
@@ -50,7 +50,7 @@ namespace TravelBuddy.Models
             return true;
         }
 
-        public bool HasEnded()
+        public virtual bool HasEnded()
         {
             return DateEnd < DateTime.Now;
         }

@@ -7,6 +7,8 @@ using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using TravelBuddy.DAL.Mappings;
+using NHibernate.Tool.hbm2ddl;
+using System.IO;
 
 namespace TravelBuddy.DAL
 {
@@ -17,8 +19,9 @@ namespace TravelBuddy.DAL
 
         private SessionFactory()
         {
+            string databaseName = "TravelBuddy.db";
             var fluentConfig = Fluently.Configure()
-                .Database(SQLiteConfiguration.Standard.InMemory()
+                .Database(SQLiteConfiguration.Standard.ConnectionString("Data Source=" + databaseName + ";Version=3").AdoNetBatchSize(1)
                 .ShowSql().FormatSql())
                 .Mappings(m =>
                     {
@@ -31,12 +34,16 @@ namespace TravelBuddy.DAL
                         m.FluentMappings.Add<TravelItemMap>();
                         m.FluentMappings.Add<CurrencyMap>();
                     });
-
             var nhConfiguration = fluentConfig.BuildConfiguration();
+            if (!File.Exists(databaseName))
+            {
+                var schemaExport = new SchemaExport(nhConfiguration);
+                schemaExport.Create(false, true);
+            }
             _factory = nhConfiguration.BuildSessionFactory();
         }
 
-        public ISessionFactory GetSessionFactory()
+        public static ISessionFactory GetSessionFactory()
         {
             if (_instance == null)
             {

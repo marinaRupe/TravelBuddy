@@ -12,5 +12,7 @@ namespace TravelBuddy.Models
         public virtual string FullName { get; set; }
         public virtual double? Latitude { get; set; }
         public virtual double? Longitude { get; set; }
+
+        public Location() { }
     }
 }

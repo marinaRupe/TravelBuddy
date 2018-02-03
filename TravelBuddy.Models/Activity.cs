@@ -13,7 +13,7 @@ namespace TravelBuddy.Models
         public virtual DateTime? DateCompleted { get; set; }
         public virtual DateTime? DueDate { get; set; }
 
-        public Activity() : base(new Guid())
+        public Activity() : base()
         {
             Description = "";
             IsCompleted = false;
@@ -24,7 +24,7 @@ namespace TravelBuddy.Models
             Name = name;
         }
 
-        public void ToggleCompleted()
+        public virtual void ToggleCompleted()
         {
             IsCompleted = !IsCompleted;
             DateCompleted = IsCompleted ? DateTime.Now : null as DateTime?;

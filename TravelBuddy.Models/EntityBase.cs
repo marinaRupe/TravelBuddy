@@ -6,18 +6,20 @@ namespace TravelBuddy.Models
 {
     public abstract class EntityBase<TId> : IEquatable<EntityBase<TId>>
     {
+        protected EntityBase() { }
+
         protected EntityBase(TId id)
         {
             if (Equals(id, default(TId)))
             {
-                throw new ArgumentException("The ID cannot be the default value.", "id");
+                throw new ArgumentException($"The ID cannot be the default value. {id} {default(TId)}", "id");
             }
             Id = id;
         }
 
-        public TId Id { get; set; }
+        public virtual TId Id { get; set; }
 
-        public bool Equals(EntityBase<TId> other)
+        public virtual bool Equals(EntityBase<TId> other)
         {
             return other != null && Id.Equals(other.Id);
         }

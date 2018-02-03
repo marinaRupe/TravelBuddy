@@ -12,7 +12,7 @@ namespace TravelBuddy.Models
         public virtual bool IsTaken { get; set; }
         public virtual string Label { get; set; }
 
-        public TravelItem() : base(new Guid())
+        public TravelItem() : base()
         {
             IsTaken = false;
             Description = "";
@@ -24,7 +24,7 @@ namespace TravelBuddy.Models
             Name = name;
         }
 
-        public void ToggleTaken()
+        public virtual void ToggleTaken()
         {
             IsTaken = !IsTaken;
         }

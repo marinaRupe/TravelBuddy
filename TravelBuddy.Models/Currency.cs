@@ -9,7 +9,7 @@ namespace TravelBuddy.Models
         public virtual string Name { get; set; }
         public virtual string Shortcut { get; set; }
 
-        public Currency() : base(new Guid())
+        public Currency() : base()
         {
         }
 

@@ -8,5 +8,7 @@ namespace TravelBuddy.Models
     {
         public virtual double Value { get; set; }
         public virtual Currency Currency { get; set; }
+
+        public MoneyValue() { }
     }
 }

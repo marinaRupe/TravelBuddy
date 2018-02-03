@@ -13,10 +13,11 @@ namespace TravelBuddy.DAL.Repositories
     {
         private readonly ISession _currentSession;
 
-        private TravelRepository(ISession session)
+        public TravelRepository(ISession session)
         {
             _currentSession = session;
         }
+
         public Travel GetTravel(Guid travelId)
         {
             return _currentSession.Get<Travel>(travelId);
