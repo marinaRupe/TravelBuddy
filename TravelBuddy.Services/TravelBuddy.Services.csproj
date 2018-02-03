@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DFE9F24A-48EA-49EA-AA5B-C1E903F9B2F4}</ProjectGuid>
+    <ProjectGuid>{0EA7BCCE-A2AF-4E17-B437-9A59B6C8E19E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TravelBuddy.DAL</RootNamespace>
-    <AssemblyName>TravelBuddy.DAL</AssemblyName>
+    <RootNamespace>TravelBuddy.Services</RootNamespace>
+    <AssemblyName>TravelBuddy.Services</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,9 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CurrencyService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TravelRepository.cs" />
-    <Compile Include="UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">

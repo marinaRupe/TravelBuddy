@@ -6,7 +6,6 @@ namespace TravelBuddy.Models.Interfaces
 {
     public interface ICostable
     {
-        double Value { get; set; }
-        string Currency { get; set; }
+        MoneyValue Cost { get; set; }
     }
 }

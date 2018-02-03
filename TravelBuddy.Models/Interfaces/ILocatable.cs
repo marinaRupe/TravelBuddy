@@ -4,7 +4,7 @@ using System.Text;
 
 namespace TravelBuddy.Models.Interfaces
 {
-    interface ITravelActivity : IActivity
+    public interface ILocatable
     {
         Location Location { get; set; }
     }

@@ -14,14 +14,13 @@ namespace TravelBuddy.Models
         public virtual DateTime DateEnd { get; set; }
         public virtual string Description { get; set; }
         public virtual bool IsArchived { get; set; }
-        public virtual double BudgetValue { get; set; }
-        public virtual string BudgetCurrency { get; set; }
+        public virtual MoneyValue Budget { get; set; }
 
         public virtual User Traveller { get; set; }
-        public virtual IList<Activity> ActivityList { get; set; }
+        public virtual IList<TravelActivity> ActivityList { get; set; }
         public virtual IList<TravelActivityWithCost> CostList { get; set; }
         public virtual IList<PreliminaryActivity> PreliminaryActivityList { get; set; }
-        public virtual IList<ITravelItem> TravelItemList { get; set; }
+        public virtual IList<TravelItem> ItemList { get; set; }
 
         public Travel() : base(new Guid())
         {
@@ -42,7 +41,6 @@ namespace TravelBuddy.Models
             if (DateTime.Now < DateStart) return TravelStatus.Planned;
             return HasEnded() ? TravelStatus.Finished : TravelStatus.Active;
         }
-
 
         public bool Archive()
         {
