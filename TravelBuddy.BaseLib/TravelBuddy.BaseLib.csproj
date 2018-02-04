@@ -45,11 +45,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\RepositoriesFactory.cs" />
+    <Compile Include="Factories\UnitOfWorkFactory.cs" />
     <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TravelBuddy.DAL\TravelBuddy.DAL.csproj">
+      <Project>{dfe9f24a-48ea-49ea-aa5b-c1e903f9b2f4}</Project>
+      <Name>TravelBuddy.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">
+      <Project>{3a7af60b-4ae2-41e7-8797-33938ae0d5b1}</Project>
+      <Name>TravelBuddy.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

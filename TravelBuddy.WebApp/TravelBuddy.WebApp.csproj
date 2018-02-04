@@ -35,4 +35,8 @@
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Travels\" />
+  </ItemGroup>
+
 </Project>
