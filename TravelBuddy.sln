@@ -1,12 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.WebApp", "TravelBuddy.WebApp\TravelBuddy.WebApp.csproj", "{3D7A6608-F5FE-475C-AEFA-6F5FFF97CA8C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.WebApp.Tests", "TravelBuddy.WebApp.Tests\TravelBuddy.WebApp.Tests.csproj", "{6F954ACC-75E5-48D8-A2D6-BBB22C165C3D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.Services", "TravelBuddy.Services\TravelBuddy.Services.csproj", "{0EA7BCCE-A2AF-4E17-B437-9A59B6C8E19E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.Models", "TravelBuddy.Models\TravelBuddy.Models.csproj", "{3A7AF60B-4AE2-41E7-8797-33938AE0D5B1}"
@@ -23,20 +19,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.DesktopApp.Pres
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.BaseLib", "TravelBuddy.BaseLib\TravelBuddy.BaseLib.csproj", "{0A6BC699-68CB-4593-A56B-6257904A5D16}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.WebApp", "TravelBuddy.WebApp\TravelBuddy.WebApp.csproj", "{71DE2C33-9D97-428A-B963-2DC250D3E93B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3D7A6608-F5FE-475C-AEFA-6F5FFF97CA8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3D7A6608-F5FE-475C-AEFA-6F5FFF97CA8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3D7A6608-F5FE-475C-AEFA-6F5FFF97CA8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3D7A6608-F5FE-475C-AEFA-6F5FFF97CA8C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6F954ACC-75E5-48D8-A2D6-BBB22C165C3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6F954ACC-75E5-48D8-A2D6-BBB22C165C3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6F954ACC-75E5-48D8-A2D6-BBB22C165C3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6F954ACC-75E5-48D8-A2D6-BBB22C165C3D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0EA7BCCE-A2AF-4E17-B437-9A59B6C8E19E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0EA7BCCE-A2AF-4E17-B437-9A59B6C8E19E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EA7BCCE-A2AF-4E17-B437-9A59B6C8E19E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -69,6 +59,10 @@ Global
 		{0A6BC699-68CB-4593-A56B-6257904A5D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A6BC699-68CB-4593-A56B-6257904A5D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A6BC699-68CB-4593-A56B-6257904A5D16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71DE2C33-9D97-428A-B963-2DC250D3E93B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71DE2C33-9D97-428A-B963-2DC250D3E93B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71DE2C33-9D97-428A-B963-2DC250D3E93B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71DE2C33-9D97-428A-B963-2DC250D3E93B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
