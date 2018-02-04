@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.DesktopApp.Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.DesktopApp.PresentationLayer", "TravelBuddy.DesktopApp.PresentationLayer\TravelBuddy.DesktopApp.PresentationLayer.csproj", "{45324CCA-38EF-4A9F-9CF7-85B99221F597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.BaseLib", "TravelBuddy.BaseLib\TravelBuddy.BaseLib.csproj", "{0A6BC699-68CB-4593-A56B-6257904A5D16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.BaseLib", "TravelBuddy.BaseLib\TravelBuddy.BaseLib.csproj", "{0a6bc699-68cb-4593-a56b-6257904a5d16}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.WebApp", "TravelBuddy.WebApp\TravelBuddy.WebApp.csproj", "{71DE2C33-9D97-428A-B963-2DC250D3E93B}"
 EndProject

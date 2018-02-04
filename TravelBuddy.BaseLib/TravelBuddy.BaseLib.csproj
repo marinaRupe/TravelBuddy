@@ -47,6 +47,10 @@
   <ItemGroup>
     <Compile Include="Factories\RepositoriesFactory.cs" />
     <Compile Include="Factories\UnitOfWorkFactory.cs" />
+    <Compile Include="ILoginView.cs" />
+    <Compile Include="IMainController.cs" />
+    <Compile Include="IMainView.cs" />
+    <Compile Include="IRegisterView.cs" />
     <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
