@@ -45,10 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILoginView.cs" />
-    <Compile Include="IMainController.cs" />
-    <Compile Include="IMainView.cs" />
-    <Compile Include="IRegisterView.cs" />
+    <Compile Include="Factories\RepositoriesFactory.cs" />
+    <Compile Include="Factories\UnitOfWorkFactory.cs" />
     <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,8 +54,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TravelBuddy.DAL\TravelBuddy.DAL.csproj">
+      <Project>{dfe9f24a-48ea-49ea-aa5b-c1e903f9b2f4}</Project>
+      <Name>TravelBuddy.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">
-      <Project>{3A7AF60B-4AE2-41E7-8797-33938AE0D5B1}</Project>
+      <Project>{3a7af60b-4ae2-41e7-8797-33938ae0d5b1}</Project>
       <Name>TravelBuddy.Models</Name>
     </ProjectReference>
   </ItemGroup>

@@ -47,6 +47,8 @@ namespace TravelBuddy.WebApp.Controllers
             _unitOfWork = unitOfWork;
             _userRepository = userRepository;
         }
+        
+        private bool DomainUserExists()
 
         [TempData]
         public string ErrorMessage { get; set; }
@@ -77,7 +79,7 @@ namespace TravelBuddy.WebApp.Controllers
                 {
                     // check domain user password
                     _unitOfWork.BeginTransaction();
-
+                    var domainUser = _userRepository.GetUserByEmail(model.Email);
 
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
