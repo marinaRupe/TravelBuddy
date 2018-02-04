@@ -14,6 +14,7 @@ using TravelBuddy.WebApp.Services;
 using TravelBuddy.DAL;
 using TravelBuddy.Models.Repositories;
 using TravelBuddy.DAL.Repositories;
+using TravelBuddy.BaseLib.Factories;
 
 namespace TravelBuddy.WebApp
 {
@@ -35,16 +36,6 @@ namespace TravelBuddy.WebApp
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<ITravelRepository, TravelRepository>();
-            services.AddTransient<ICurrencyRepository>(serviceProvider =>
-            {
-                var repo = new CurrencyRepository(serviceProvider.GetService<IUnitOfWork>());
-                repo.CreateCurrenciesIfNoneExist();
-                return repo;
-            });
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();

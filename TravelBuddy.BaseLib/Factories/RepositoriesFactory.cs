@@ -4,22 +4,12 @@ using TravelBuddy.Models.Repositories;
 
 namespace TravelBuddy.BaseLib.Factories
 {
-    public class RepositoriesFactory
+    public static class RepositoriesFactory
     {
-        private static RepositoriesFactory _instance;
+        public static ITravelRepository CreateTravelRepository(IUnitOfWork unitOfWork) => new TravelRepository(unitOfWork);
 
-        private RepositoriesFactory() { }
+        public static IUserRepository CreateUserRepository(IUnitOfWork unitOfWork) => new UserRepository(unitOfWork);
 
-        public static RepositoriesFactory GetInstance()
-        {
-            _instance = _instance ?? new RepositoriesFactory();
-            return _instance;
-        }
-
-        public ITravelRepository CreateTravelRepository(IUnitOfWork unitOfWork) => new TravelRepository(unitOfWork);
-
-        public IUserRepository CreateUserRepository(IUnitOfWork unitOfWork) => new UserRepository(unitOfWork);
-
-        public ICurrencyRepository CreateCurrencyRepository(IUnitOfWork unitOfWork) => new CurrencyRepository(unitOfWork);
+        public static ICurrencyRepository CreateCurrencyRepository(IUnitOfWork unitOfWork) => new CurrencyRepository(unitOfWork);
     }
 }

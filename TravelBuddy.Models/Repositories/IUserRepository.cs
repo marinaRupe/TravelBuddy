@@ -12,5 +12,6 @@ namespace TravelBuddy.Models.Repositories
         void DeleteUser(Guid userId);
         User GetUserByEmail(string email);
         User GetUserByUsername(string username);
+        bool doesUserExist(string email, string username);
     }
 }

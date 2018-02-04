@@ -61,5 +61,10 @@ namespace TravelBuddy.DAL.Repositories
                 .Take(1);
             return query.SingleOrDefault();
         }
+
+        public bool doesUserExist(string email = null, string username = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

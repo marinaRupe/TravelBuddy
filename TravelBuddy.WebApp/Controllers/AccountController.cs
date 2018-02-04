@@ -16,6 +16,7 @@ using TravelBuddy.WebApp.Services;
 using TravelBuddy.DAL;
 using TravelBuddy.Models.Repositories;
 using TravelBuddy.Models;
+using TravelBuddy.BaseLib.Factories;
 
 namespace TravelBuddy.WebApp.Controllers
 {
@@ -28,27 +29,26 @@ namespace TravelBuddy.WebApp.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
-        private readonly IUnitOfWork _unitOfWork;
-        private readonly IUserRepository _userRepository;
-
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger,
-            IUnitOfWork unitOfWork,
-            IUserRepository userRepository)
+            ILogger<AccountController> logger)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
-
-            _unitOfWork = unitOfWork;
-            _userRepository = userRepository;
         }
         
-        private bool DomainUserExists()
+        private bool DomainUserExists(string username, string email)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
+            unitOfWork.BeginTransaction();
+            unitOfWork.Commit();
+            return false;
+        }
 
         [TempData]
         public string ErrorMessage { get; set; }
@@ -70,6 +70,9 @@ namespace TravelBuddy.WebApp.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+
+            var exists = DomainUserExists(model.Username, model.Email);
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -78,8 +81,8 @@ namespace TravelBuddy.WebApp.Controllers
                 if (result.Succeeded)
                 {
                     // check domain user password
-                    _unitOfWork.BeginTransaction();
-                    var domainUser = _userRepository.GetUserByEmail(model.Email);
+                    //_unitOfWork.BeginTransaction();
+                    //var domainUser = _userRepository.GetUserByEmail(model.Email);
 
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
@@ -241,9 +244,9 @@ namespace TravelBuddy.WebApp.Controllers
 
                 // create a domain model User
                 var domainUser = new User(model.Username, model.Email, model.Password);
-                _unitOfWork.BeginTransaction();
-                _userRepository.AddUser(domainUser);
-                _unitOfWork.Commit();
+                //_unitOfWork.BeginTransaction();
+                //_userRepository.AddUser(domainUser);
+                //_unitOfWork.Commit();
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -442,11 +445,11 @@ namespace TravelBuddy.WebApp.Controllers
             if (result.Succeeded)
             {
                 // change domain user password
-                _unitOfWork.BeginTransaction();
-                var domainUser = _userRepository.GetUserByEmail(model.Email);
-                domainUser.Password = model.Password;
-                _userRepository.UpdateUser(domainUser);
-                _unitOfWork.Commit();
+                //_unitOfWork.BeginTransaction();
+                //var domainUser = _userRepository.GetUserByEmail(model.Email);
+                //domainUser.Password = model.Password;
+                //_userRepository.UpdateUser(domainUser);
+                //_unitOfWork.Commit();
 
                 return RedirectToAction(nameof(ResetPasswordConfirmation));
             }

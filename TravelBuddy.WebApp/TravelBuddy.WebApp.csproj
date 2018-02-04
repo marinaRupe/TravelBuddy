@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TravelBuddy.BaseLib\TravelBuddy.BaseLib.csproj" />
     <ProjectReference Include="..\TravelBuddy.DAL\TravelBuddy.DAL.csproj" />
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj" />
   </ItemGroup>
