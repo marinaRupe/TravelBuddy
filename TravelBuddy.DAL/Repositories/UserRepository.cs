@@ -34,7 +34,7 @@ namespace TravelBuddy.DAL.Repositories
 
         public void DeleteUser(Guid userId)
         {
-            var user = Session.Get<Travel>(userId);
+            var user = Session.Get<User>(userId);
 
             if (user != null)
             {

@@ -10,5 +10,7 @@ namespace TravelBuddy.Models.Repositories
         void AddTravel(Travel travel);
         void UpdateTravel(Travel travel);
         void DeleteTravel(Guid travelId);
+        void AddActivityToCosts(Guid travelId, TravelActivity activity, MoneyValue cost);
+        void RemoveActivityFromCosts(Guid travelId, TravelActivityWithCost activityWithCost);
     }
 }

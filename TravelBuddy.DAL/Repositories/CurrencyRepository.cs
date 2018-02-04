@@ -22,7 +22,7 @@ namespace TravelBuddy.DAL.Repositories
 
         public void CreateCurrenciesIfNoneExist()
         {
-            var currenciesCount = Session.Query<Currency>().Count();
+            var currenciesCount = Session.QueryOver<Currency>().RowCount();
             if (currenciesCount != 0) return;
 
             var currencies = new List<Currency>
@@ -72,12 +72,13 @@ namespace TravelBuddy.DAL.Repositories
 
         public IList<Currency> GetAll()
         {
-            return Session.Query<Currency>().ToList();
+            return Session.QueryOver<Currency>().List();
         }
 
         public Currency GetByShortcut(string shortcut)
         {
-            return Session.Query<Currency>().SingleOrDefault(c => c.Shortcut == shortcut);
+            var query = Session.QueryOver<Currency>().Where(c => c.Shortcut == shortcut).Take(1);
+            return query.SingleOrDefault();
         }
 
         public Currency GetById(Guid id)
@@ -97,7 +98,7 @@ namespace TravelBuddy.DAL.Repositories
 
         public void DeleteCurrency(Guid currencyId)
         {
-            var currency = Session.Get<Travel>(currencyId);
+            var currency = Session.Get<Currency>(currencyId);
 
             if (currency != null)
             {

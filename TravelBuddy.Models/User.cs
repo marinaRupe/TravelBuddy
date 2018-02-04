@@ -18,7 +18,7 @@ namespace TravelBuddy.Models
             get { return _password; }
             set
             {
-                var valueBytes = Encoding.UTF8.GetBytes(value);
+                var valueBytes = Encoding.UTF8.GetBytes(value ?? "");
                 _password = Encoding.UTF8.GetString(hashAlgorithm.ComputeHash(valueBytes));
             }
         }
@@ -38,7 +38,7 @@ namespace TravelBuddy.Models
 
         public virtual bool IsSamePassword(string password)
         {
-            var passwordBytes = Encoding.UTF8.GetBytes(password);
+            var passwordBytes = Encoding.UTF8.GetBytes(password ?? "");
             var hashedPassword = Encoding.UTF8.GetString(hashAlgorithm.ComputeHash(passwordBytes));
             return hashedPassword == _password;
         }
