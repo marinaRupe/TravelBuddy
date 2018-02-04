@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.Services", "TravelBuddy.Services\TravelBuddy.Services.csproj", "{0EA7BCCE-A2AF-4E17-B437-9A59B6C8E19E}"
 EndProject
@@ -17,9 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.DesktopApp.Cont
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.DesktopApp.PresentationLayer", "TravelBuddy.DesktopApp.PresentationLayer\TravelBuddy.DesktopApp.PresentationLayer.csproj", "{45324CCA-38EF-4A9F-9CF7-85B99221F597}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.BaseLib", "TravelBuddy.BaseLib\TravelBuddy.BaseLib.csproj", "{0a6bc699-68cb-4593-a56b-6257904a5d16}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.BaseLib", "TravelBuddy.BaseLib\TravelBuddy.BaseLib.csproj", "{0A6BC699-68CB-4593-A56B-6257904A5D16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.WebApp", "TravelBuddy.WebApp\TravelBuddy.WebApp.csproj", "{71DE2C33-9D97-428A-B963-2DC250D3E93B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelBuddy.WebApp", "TravelBuddy.WebApp\TravelBuddy.WebApp.csproj", "{71DE2C33-9D97-428A-B963-2DC250D3E93B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelBuddy.DesktopApp.ViewModels", "TravelBuddy.DesktopApp.ViewModels\TravelBuddy.DesktopApp.ViewModels.csproj", "{44958193-2583-4713-BF4D-3E9084310BEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{71DE2C33-9D97-428A-B963-2DC250D3E93B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71DE2C33-9D97-428A-B963-2DC250D3E93B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71DE2C33-9D97-428A-B963-2DC250D3E93B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44958193-2583-4713-BF4D-3E9084310BEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44958193-2583-4713-BF4D-3E9084310BEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44958193-2583-4713-BF4D-3E9084310BEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44958193-2583-4713-BF4D-3E9084310BEF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.travelNameInput = new System.Windows.Forms.TextBox();
+            this.descriptionInput = new System.Windows.Forms.TextBox();
             this.addTravelBtn = new System.Windows.Forms.Button();
             this.dateStartPicker = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
@@ -64,20 +64,20 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Opis";
             // 
-            // textBox1
+            // travelNameInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(117, 11);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(208, 20);
-            this.textBox1.TabIndex = 2;
+            this.travelNameInput.Location = new System.Drawing.Point(117, 11);
+            this.travelNameInput.Name = "travelNameInput";
+            this.travelNameInput.Size = new System.Drawing.Size(208, 20);
+            this.travelNameInput.TabIndex = 2;
             // 
-            // textBox2
+            // descriptionInput
             // 
-            this.textBox2.Location = new System.Drawing.Point(117, 37);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(208, 47);
-            this.textBox2.TabIndex = 3;
+            this.descriptionInput.Location = new System.Drawing.Point(117, 37);
+            this.descriptionInput.Multiline = true;
+            this.descriptionInput.Name = "descriptionInput";
+            this.descriptionInput.Size = new System.Drawing.Size(208, 47);
+            this.descriptionInput.TabIndex = 3;
             // 
             // addTravelBtn
             // 
@@ -173,8 +173,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dateStartPicker);
             this.Controls.Add(this.addTravelBtn);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.descriptionInput);
+            this.Controls.Add(this.travelNameInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "AddTravel";
@@ -189,8 +189,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox travelNameInput;
+        private System.Windows.Forms.TextBox descriptionInput;
         private System.Windows.Forms.Button addTravelBtn;
         private System.Windows.Forms.DateTimePicker dateStartPicker;
         private System.Windows.Forms.Label label3;

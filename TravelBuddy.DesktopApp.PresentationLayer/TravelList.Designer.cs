@@ -52,6 +52,7 @@
             this.addTravelBtn.TabIndex = 2;
             this.addTravelBtn.Text = "Dodaj putovanje";
             this.addTravelBtn.UseVisualStyleBackColor = true;
+            this.addTravelBtn.Click += new System.EventHandler(this.addTravelBtn_Click);
             // 
             // label1
             // 

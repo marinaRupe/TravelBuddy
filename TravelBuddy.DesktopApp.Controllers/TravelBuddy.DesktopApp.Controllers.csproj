@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="MainFormController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TravelController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelBuddy.BaseLib\TravelBuddy.BaseLib.csproj">
@@ -52,6 +53,10 @@
     <ProjectReference Include="..\TravelBuddy.DAL\TravelBuddy.DAL.csproj">
       <Project>{DFE9F24A-48EA-49EA-AA5B-C1E903F9B2F4}</Project>
       <Name>TravelBuddy.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TravelBuddy.DesktopApp.ViewModels\TravelBuddy.DesktopApp.ViewModels.csproj">
+      <Project>{44958193-2583-4713-BF4D-3E9084310BEF}</Project>
+      <Name>TravelBuddy.DesktopApp.ViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">
       <Project>{3A7AF60B-4AE2-41E7-8797-33938AE0D5B1}</Project>

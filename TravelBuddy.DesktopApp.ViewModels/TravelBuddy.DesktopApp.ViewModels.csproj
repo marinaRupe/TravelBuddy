@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0A6BC699-68CB-4593-A56B-6257904A5D16}</ProjectGuid>
+    <ProjectGuid>{44958193-2583-4713-BF4D-3E9084310BEF}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>TravelBuddy.BaseLib</RootNamespace>
-    <AssemblyName>TravelBuddy.BaseLib</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TravelBuddy.DesktopApp.ViewModels</RootNamespace>
+    <AssemblyName>TravelBuddy.DesktopApp.ViewModels</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,32 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\RepositoriesFactory.cs" />
-    <Compile Include="Factories\UnitOfWorkFactory.cs" />
-    <Compile Include="Views\IAddTravelView.cs" />
-    <Compile Include="Views\ILoginView.cs" />
-    <Compile Include="IMainController.cs" />
-    <Compile Include="Views\IMainView.cs" />
-    <Compile Include="Views\IRegisterView.cs" />
-    <Compile Include="ITravelController.cs" />
-    <Compile Include="Views\ITravelListView.cs" />
-    <Compile Include="IWindowFormsFactory.cs" />
+    <Compile Include="AddTravelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TravelBuddy.DAL\TravelBuddy.DAL.csproj">
-      <Project>{dfe9f24a-48ea-49ea-aa5b-c1e903f9b2f4}</Project>
-      <Name>TravelBuddy.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TravelBuddy.DesktopApp.ViewModels\TravelBuddy.DesktopApp.ViewModels.csproj">
-      <Project>{44958193-2583-4713-BF4D-3E9084310BEF}</Project>
-      <Name>TravelBuddy.DesktopApp.ViewModels</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">
-      <Project>{3a7af60b-4ae2-41e7-8797-33938ae0d5b1}</Project>
+      <Project>{3A7AF60B-4AE2-41E7-8797-33938AE0D5B1}</Project>
       <Name>TravelBuddy.Models</Name>
     </ProjectReference>
   </ItemGroup>

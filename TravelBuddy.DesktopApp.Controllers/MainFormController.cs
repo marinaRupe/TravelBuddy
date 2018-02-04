@@ -17,7 +17,8 @@ namespace TravelBuddy.DesktopApp.Controllers
     {
         private bool _defaultModelLoaded = false;
         private readonly IWindowFormsFactory _formsFactory;
-        private User _loggedInUser;
+        public Guid LoggedInUserId { get; private set; }
+        private bool _isUserLoggedIn = false;
 
         public MainFormController(IWindowFormsFactory formsFactory)
         {
@@ -50,7 +51,7 @@ namespace TravelBuddy.DesktopApp.Controllers
 
         public bool IsUserLoggedIn()
         {
-            return _loggedInUser == null;
+            return _isUserLoggedIn;
         }
 
         public void Login(string username, string password)
@@ -65,7 +66,8 @@ namespace TravelBuddy.DesktopApp.Controllers
                 var user = userRepository.GetUserByUsername(username);
                 if (user.IsSamePassword(password))
                 {
-                    _loggedInUser = user;
+                    LoggedInUserId = user.Id;
+                    _isUserLoggedIn = true;
                     unitOfWork.Commit();
 
                     ShowMainWindow();
@@ -79,7 +81,7 @@ namespace TravelBuddy.DesktopApp.Controllers
             {
                 unitOfWork.Rollback();
 
-                _loggedInUser = null;
+                _isUserLoggedIn = false;
                 ShowLoginWindow();
                 MessageBox.Show(ex.Message, "TravelBuddy");
             }
@@ -87,7 +89,7 @@ namespace TravelBuddy.DesktopApp.Controllers
 
         public void Logout()
         {
-            _loggedInUser = null;
+            _isUserLoggedIn = false;
             ShowLoginWindow();
         }
 
@@ -109,7 +111,8 @@ namespace TravelBuddy.DesktopApp.Controllers
                 };
 
                 userRepository.AddUser(user);
-                _loggedInUser = user;
+                LoggedInUserId = user.Id;
+                _isUserLoggedIn = true;
 
                 unitOfWork.Commit();
 
@@ -119,11 +122,40 @@ namespace TravelBuddy.DesktopApp.Controllers
             {
                 unitOfWork.Rollback();
 
-                _loggedInUser = null;
+                _isUserLoggedIn = false;
                 ShowRegisterWindow();
                 MessageBox.Show(ex.Message, "TravelBuddy");
             }
         }
+
+        public void OpenTravelListWindow()
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
+
+            var travelController = new TravelController(this, _formsFactory);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var user = userRepository.GetUser(LoggedInUserId);
+                var travels = user.Travels;
+
+                unitOfWork.Commit();
+
+                var travelListView = _formsFactory.CreateTravelListView(travelController, travels);
+                travelListView.ShowModaless();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                ShowRegisterWindow();
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
         private void ShowLoginWindow()
         {
             var loginView = _formsFactory.CreateLoginView(this);

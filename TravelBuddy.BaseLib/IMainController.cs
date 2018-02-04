@@ -12,5 +12,8 @@ namespace TravelBuddy.BaseLib
         void Register(string username, string email, string password);
         void Logout();
         void ShowRegisterWindow();
+        void OpenTravelListWindow();
+        Guid LoggedInUserId { get; }
+        bool IsUserLoggedIn();
     }
 }

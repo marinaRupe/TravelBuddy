@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravelBuddy.BaseLib;
+using TravelBuddy.Models;
 using TravelBuddy.Models.Repositories;
 
 namespace TravelBuddy.DesktopApp.PresentationLayer
@@ -23,6 +24,16 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
         public IMainView CreateMainView(IMainController mainController)
         {
             return new MainWindow(mainController);
+        }
+
+        public ITravelListView CreateTravelListView(ITravelController travelController, IList<Travel> travels)
+        {
+            return new TravelList(travelController, travels);
+        }
+
+        public IAddTravelView CreateAddTravelView(ITravelController travelController)
+        {
+            return new AddTravel(travelController);
         }
     }
 }

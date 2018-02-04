@@ -147,6 +147,10 @@
       <Project>{6B2DD52C-52EA-4CFA-B8FA-F5981978CAFA}</Project>
       <Name>TravelBuddy.DesktopApp.Controllers</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TravelBuddy.DesktopApp.ViewModels\TravelBuddy.DesktopApp.ViewModels.csproj">
+      <Project>{44958193-2583-4713-BF4D-3E9084310BEF}</Project>
+      <Name>TravelBuddy.DesktopApp.ViewModels</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">
       <Project>{3A7AF60B-4AE2-41E7-8797-33938AE0D5B1}</Project>
       <Name>TravelBuddy.Models</Name>

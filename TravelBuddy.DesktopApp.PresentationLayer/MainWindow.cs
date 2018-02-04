@@ -30,14 +30,14 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
 
         private void travelListButton_Click(object sender, EventArgs e)
         {
-
+            _controller.OpenTravelListWindow();
         }
 
         private void logoutButton_Click(object sender, EventArgs e)
         {
-            _controller.Logout();
-
             Hide();
+
+            _controller.Logout();
         }
     }
 }
