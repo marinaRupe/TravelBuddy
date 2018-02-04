@@ -14,42 +14,21 @@ namespace TravelBuddy.DAL.Repositories.Tests
     [TestClass()]
     public class TravelRepositoryTests
     {
-        static ISessionFactory _factory;
-        ISession _session;
-        ITransaction _transaction;
-        ITravelRepository _repository;
-
-        [ClassInitialize()]
-        public static void Init(TestContext context)
-        {
-            _factory = SessionFactory.GetSessionFactory();
-        }
-
+        private IUnitOfWork _unitOfWork;
+        private ITravelRepository _repository;
+        
         [TestInitialize()]
         public void SetUp()
         {
-            _session = _factory.OpenSession();
-            _repository = new TravelRepository(_session);
-            _transaction = _session.BeginTransaction();
+            _unitOfWork = new UnitOfWork();
+            _repository = new TravelRepository(_unitOfWork);
+            _unitOfWork.BeginTransaction();
         }
 
         [TestCleanup()]
         public void TearDown()
         {
-            // TODO: Update with UnitOfWork
-            try
-            {
-                if (_transaction != null && _transaction.IsActive) _transaction.Commit();
-            }
-            catch
-            {
-                if (_transaction != null && _transaction.IsActive) _transaction.Rollback();
-                throw;
-            }
-            finally
-            {
-                _session.Dispose();
-            }
+            _unitOfWork.Commit();
         }
 
         [TestMethod()]

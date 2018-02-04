@@ -12,7 +12,7 @@ using TravelBuddy.DAL.Mappings;
 
 namespace TravelBuddy.DAL
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         private static readonly ISessionFactory _sessionFactory;
         private ITransaction _transaction;
