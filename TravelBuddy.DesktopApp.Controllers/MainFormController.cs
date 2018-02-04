@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravelBuddy.BaseLib;
+using TravelBuddy.BaseLib.Factories;
 using TravelBuddy.DAL;
 using TravelBuddy.DAL.Repositories;
 using TravelBuddy.Models;
@@ -15,18 +16,12 @@ namespace TravelBuddy.DesktopApp.Controllers
     public class MainFormController : IMainController
     {
         private bool _defaultModelLoaded = false;
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IWindowFormsFactory _formsFactory;
-        private readonly IUserRepository _userRepository;
-        private readonly ICurrencyRepository _currencyRepository;
         private User _loggedInUser;
 
-        public MainFormController(IWindowFormsFactory formsFactory, IUnitOfWork unitOfWork, IUserRepository userRepo, ICurrencyRepository currencyRepo)
+        public MainFormController(IWindowFormsFactory formsFactory)
         {
             _formsFactory = formsFactory;
-            _unitOfWork = unitOfWork;
-            _userRepository = userRepo;
-            _currencyRepository = currencyRepo;
 
             LoadDefaultModel();
         }
@@ -34,15 +29,19 @@ namespace TravelBuddy.DesktopApp.Controllers
         public void LoadDefaultModel()
         {
             if (_defaultModelLoaded != false) return;
+
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var currencyRepository = RepositoriesFactory.CreateCurrencyRepository(unitOfWork);
+
             try
             {
-                _unitOfWork.BeginTransaction();
-                _currencyRepository.CreateCurrenciesIfNoneExist();
-                _unitOfWork.Commit();
+                unitOfWork.BeginTransaction();
+                currencyRepository.CreateCurrenciesIfNoneExist();
+                unitOfWork.Commit();
             }
             catch (Exception ex)
             {
-                _unitOfWork.Rollback();
+                unitOfWork.Rollback();
                 MessageBox.Show(ex.Message, "TravelBuddy");
             }
                 
@@ -56,8 +55,8 @@ namespace TravelBuddy.DesktopApp.Controllers
 
         public void Login(string username, string password)
         {
-            var unitOfWork = new UnitOfWork();
-            var userRepository = new UserRepository(unitOfWork);
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
 
             try
             {
@@ -94,8 +93,9 @@ namespace TravelBuddy.DesktopApp.Controllers
 
         public void Register(string username, string email, string password)
         {
-            var unitOfWork = new UnitOfWork();
-            var userRepository = new UserRepository(unitOfWork);
+
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
 
             try
             { 

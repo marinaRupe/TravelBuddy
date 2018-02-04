@@ -29,9 +29,9 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
 
         private void registerLabel_Click(object sender, EventArgs e)
         {
-            _controller.ShowRegisterWindow();
-
             Hide();
+
+            _controller.ShowRegisterWindow();
         }
 
         private void loginBtn_Click(object sender, EventArgs e)
@@ -39,9 +39,9 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             var username = usernameInput.Text;
             var password = passwordInput.Text;
 
-            _controller.Login(username, password);
-
             Hide();
+
+            _controller.Login(username, password);
         }
     }
 }

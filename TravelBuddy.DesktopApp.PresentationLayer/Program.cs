@@ -21,15 +21,10 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
         {
             IWindowFormsFactory formsFactory = new WindowFormsFactory();
 
-            IUnitOfWork unitOfWork = new UnitOfWork();
-            ITravelRepository travelRepo = new TravelRepository(unitOfWork);
-            IUserRepository userRepo = new UserRepository(unitOfWork);
-            ICurrencyRepository currencyRepo = new CurrencyRepository(unitOfWork);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var mainController = new MainFormController(formsFactory, unitOfWork, userRepo, currencyRepo);
+            var mainController = new MainFormController(formsFactory);
 
             Application.Run(new Login(mainController));
         }

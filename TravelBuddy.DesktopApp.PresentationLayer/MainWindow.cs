@@ -36,6 +36,8 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
         private void logoutButton_Click(object sender, EventArgs e)
         {
             _controller.Logout();
+
+            Hide();
         }
     }
 }

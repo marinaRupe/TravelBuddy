@@ -16,5 +16,10 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
         {
             InitializeComponent();
         }
+
+        private void addTravelBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
