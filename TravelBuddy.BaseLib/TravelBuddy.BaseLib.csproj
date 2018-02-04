@@ -45,11 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILoginView.cs" />
+    <Compile Include="IMainController.cs" />
+    <Compile Include="IMainView.cs" />
+    <Compile Include="IRegisterView.cs" />
     <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">
+      <Project>{3A7AF60B-4AE2-41E7-8797-33938AE0D5B1}</Project>
+      <Name>TravelBuddy.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

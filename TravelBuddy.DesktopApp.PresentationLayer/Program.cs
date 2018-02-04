@@ -26,11 +26,12 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             IUserRepository userRepo = new UserRepository(unitOfWork);
             ICurrencyRepository currencyRepo = new CurrencyRepository(unitOfWork);
 
-            var mainController = new MainFormController(formsFactory, unitOfWork, userRepo, currencyRepo);
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow(mainController));
+
+            var mainController = new MainFormController(formsFactory, unitOfWork, userRepo, currencyRepo);
+
+            Application.Run(new Login(mainController));
         }
     }
 }

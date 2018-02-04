@@ -8,18 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TravelBuddy.BaseLib;
-using TravelBuddy.DesktopApp.Controllers;
 
 namespace TravelBuddy.DesktopApp.PresentationLayer
 {
-    public partial class MainWindow : Form, IMainView
+    public partial class Register : Form, IRegisterView
     {
         private readonly IMainController _controller;
-        private readonly WindowFormsFactory _formsFactory = new WindowFormsFactory();
-
-        public MainWindow(IMainController controller)
+        public Register(IMainController mainController)
         {
-            _controller = controller;
+            _controller = mainController;
+
             InitializeComponent();
         }
 
@@ -28,14 +26,15 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             Show();
         }
 
-        private void travelListButton_Click(object sender, EventArgs e)
+        private void registerButton_Click(object sender, EventArgs e)
         {
+            var username = usernameInput.Text;
+            var email = emailInput.Text;
+            var password = passwordInput.Text;
 
-        }
+            _controller.Register(username, email, password);
 
-        private void logoutButton_Click(object sender, EventArgs e)
-        {
-            _controller.Logout();
+            Hide();
         }
     }
 }
