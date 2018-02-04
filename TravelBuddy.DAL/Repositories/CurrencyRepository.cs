@@ -77,7 +77,10 @@ namespace TravelBuddy.DAL.Repositories
 
         public Currency GetByShortcut(string shortcut)
         {
-            var query = Session.QueryOver<Currency>().Where(c => c.Shortcut == shortcut).Take(1);
+            var query = Session.QueryOver<Currency>()
+                .WhereRestrictionOn(x => x.Shortcut)
+                .IsInsensitiveLike(shortcut)
+                .Take(1);
             return query.SingleOrDefault();
         }
 

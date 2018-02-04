@@ -108,5 +108,53 @@ namespace TravelBuddy.DAL.Repositories.Tests
             _repository.DeleteUser(userId);
             Assert.AreEqual(null, _repository.GetUser(userId));
         }
+
+        [TestMethod()]
+        public void GetUserByEmailTest()
+        {
+            var user = new User
+            {
+                Username = "ZvoneEmail",
+                Email = "zvone@fer.hr"
+            };
+            _repository.AddUser(user);
+            Assert.AreEqual(user, _repository.GetUserByEmail(user.Email));
+        }
+
+        [TestMethod()]
+        public void GetUserByEmailCaseInsensitiveTest()
+        {
+            var user = new User
+            {
+                Username = "ZvoneEmail",
+                Email = "zvone@fer.hr"
+            };
+            _repository.AddUser(user);
+            Assert.AreEqual(user, _repository.GetUserByEmail(user.Email.ToUpper()));
+        }
+
+        [TestMethod()]
+        public void GetUserByEmailSQLLikeInjectionProofTest()
+        {
+            var user = new User
+            {
+                Username = "ZvoneEmail",
+                Email = "zvone@fer.hr"
+            };
+            _repository.AddUser(user);
+            Assert.AreNotEqual(user, _repository.GetUserByEmail("%@%"));
+        }
+
+        [TestMethod()]
+        public void GetUserByUsernameTest()
+        {
+            var user = new User
+            {
+                Username = "ZvoneUsername",
+                Email = "zvone@fer.hr"
+            };
+            _repository.AddUser(user);
+            Assert.AreEqual(user, _repository.GetUserByUsername(user.Username));
+        }
     }
 }

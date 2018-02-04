@@ -109,6 +109,19 @@ namespace TravelBuddy.DAL.Repositories.Tests
         }
 
         [TestMethod()]
+        public void GetByShortcutCaseInsensitiveTest()
+        {
+            var bitcoin = new Currency
+            {
+                Name = "bitcoin",
+                Shortcut = "BTC"
+            };
+            Assert.AreEqual(null, _repository.GetByShortcut(bitcoin.Shortcut.ToLower()));
+            _repository.AddCurrency(bitcoin);
+            Assert.AreEqual(bitcoin, _repository.GetByShortcut(bitcoin.Shortcut.ToLower()));
+        }
+
+        [TestMethod()]
         public void GetByIdIfNotExistTest()
         {
             Assert.AreEqual(null, _repository.GetById(default(Guid)));

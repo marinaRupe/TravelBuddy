@@ -36,7 +36,7 @@ namespace TravelBuddy.WebApp
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<ITravelRepository, TravelRepository>();
             services.AddTransient<ICurrencyRepository>(serviceProvider =>

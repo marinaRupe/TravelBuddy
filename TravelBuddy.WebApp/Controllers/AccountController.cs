@@ -13,6 +13,9 @@ using Microsoft.Extensions.Options;
 using TravelBuddy.WebApp.Models;
 using TravelBuddy.WebApp.Models.AccountViewModels;
 using TravelBuddy.WebApp.Services;
+using TravelBuddy.DAL;
+using TravelBuddy.Models.Repositories;
+using TravelBuddy.Models;
 
 namespace TravelBuddy.WebApp.Controllers
 {
@@ -25,16 +28,24 @@ namespace TravelBuddy.WebApp.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
 
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserRepository _userRepository;
+
         public AccountController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
             IEmailSender emailSender,
-            ILogger<AccountController> logger)
+            ILogger<AccountController> logger,
+            IUnitOfWork unitOfWork,
+            IUserRepository userRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
+
+            _unitOfWork = unitOfWork;
+            _userRepository = userRepository;
         }
 
         [TempData]
@@ -64,6 +75,10 @@ namespace TravelBuddy.WebApp.Controllers
                 var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
+                    // check domain user password
+                    _unitOfWork.BeginTransaction();
+
+
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -221,6 +236,13 @@ namespace TravelBuddy.WebApp.Controllers
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+                // create a domain model User
+                var domainUser = new User(model.Username, model.Email, model.Password);
+                _unitOfWork.BeginTransaction();
+                _userRepository.AddUser(domainUser);
+                _unitOfWork.Commit();
+
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -417,6 +439,13 @@ namespace TravelBuddy.WebApp.Controllers
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
             if (result.Succeeded)
             {
+                // change domain user password
+                _unitOfWork.BeginTransaction();
+                var domainUser = _userRepository.GetUserByEmail(model.Email);
+                domainUser.Password = model.Password;
+                _userRepository.UpdateUser(domainUser);
+                _unitOfWork.Commit();
+
                 return RedirectToAction(nameof(ResetPasswordConfirmation));
             }
             AddErrors(result);

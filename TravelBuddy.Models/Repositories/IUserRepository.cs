@@ -10,5 +10,7 @@ namespace TravelBuddy.Models.Repositories
         void AddUser(User user);
         void UpdateUser(User user);
         void DeleteUser(Guid userId);
+        User GetUserByEmail(string email);
+        User GetUserByUsername(string username);
     }
 }

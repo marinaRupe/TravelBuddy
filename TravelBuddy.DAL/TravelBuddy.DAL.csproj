@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\QueryOverExtensions.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Mappings\ActivityMap.cs" />
     <Compile Include="Mappings\CurrencyMap.cs" />

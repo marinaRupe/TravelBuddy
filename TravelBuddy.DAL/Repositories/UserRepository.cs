@@ -4,6 +4,10 @@ using System.Text;
 using NHibernate;
 using TravelBuddy.Models;
 using TravelBuddy.Models.Repositories;
+using NHibernate.Criterion;
+using NHibernate.Linq;
+using System.Linq;
+using TravelBuddy.DAL.Extensions;
 
 namespace TravelBuddy.DAL.Repositories
 {
@@ -40,6 +44,22 @@ namespace TravelBuddy.DAL.Repositories
             {
                 Session.Delete(user);
             }
+        }
+
+        public User GetUserByEmail(string email)
+        {
+            var query = Session.QueryOver<User>()
+                .WhereEqualInsensitive(u => u.Email, email)
+                .Take(1);
+            return query.SingleOrDefault();
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            var query = Session.QueryOver<User>()
+                .Where(u => u.Username == username)
+                .Take(1);
+            return query.SingleOrDefault();
         }
     }
 }
