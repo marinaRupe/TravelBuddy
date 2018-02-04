@@ -63,6 +63,19 @@ namespace TravelBuddy.DAL.Repositories.Tests
         }
 
         [TestMethod()]
+        public void AddUserSamePasswordTestTest()
+        {
+            var password = "neka-super.kul+sifra";
+            var user = new User
+            {
+                Username = "AddZvone",
+            };
+            user.SetPassword(password);
+            _repository.AddUser(user);
+            Assert.IsTrue(_repository.GetUser(user.Id).IsSamePassword(password));
+        }
+
+        [TestMethod()]
         public void UpdateUserTest()
         {
             var user = new User
