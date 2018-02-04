@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TravelBuddy.DesktopApp.Properties
+namespace TravelBuddy.DesktopApp.PresentationLayer.Properties
 {
 
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TravelBuddy.DesktopApp.Properties
+namespace TravelBuddy.DesktopApp.PresentationLayer.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace TravelBuddy.DesktopApp.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TravelBuddy.DesktopApp.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TravelBuddy.DesktopApp.PresentationLayer.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

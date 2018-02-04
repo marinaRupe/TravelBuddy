@@ -14,5 +14,6 @@ namespace TravelBuddy.Models.Repositories
         void AddCurrency(Currency currency);
         void UpdateCurrency(Currency currency);
         void DeleteCurrency(Guid currencyId);
+        void CreateCurrenciesIfNoneExist();
     }
 }
