@@ -42,14 +42,41 @@ namespace TravelBuddy.DAL.Repositories
             }
         }
 
-        public void ToggleCompleted()
+        public void AddActivityToCosts(Guid travelId, TravelActivity activity, MoneyValue cost)
         {
+            var travel = _currentSession.Get<Travel>(travelId);
+            var activityWithCost = new TravelActivityWithCost
+            {
+                Name = activity.Name,
+                Description = activity.Description,
+                IsCompleted = activity.IsCompleted,
+                DateCompleted = activity.DateCompleted,
+                DueDate = activity.DueDate,
+                Cost = cost
+            };
+
+            travel.CostList.Add(activityWithCost);
+            travel.ActivityList.Remove(activity);
+
+            _currentSession.Update(travel);
         }
 
-        public void ArchiveTravel(Guid travelId)
+        public void RemoveActivityFromCosts(Guid travelId, TravelActivityWithCost activityWithCost)
         {
-            var travel = GetTravel(travelId);
-            travel.Archive();
+            var travel = _currentSession.Get<Travel>(travelId);
+            var activity = new TravelActivity
+            {
+                Name = activityWithCost.Name,
+                Description = activityWithCost.Description,
+                IsCompleted = activityWithCost.IsCompleted,
+                DateCompleted = activityWithCost.DateCompleted,
+                DueDate = activityWithCost.DueDate
+            };
+
+            travel.ActivityList.Add(activity);
+            travel.CostList.Remove(activityWithCost);
+
+            _currentSession.Update(travel);
         }
     }
 }

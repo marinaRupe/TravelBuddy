@@ -11,6 +11,8 @@ namespace TravelBuddy.Models.Repositories
         IList<Currency> GetAll();
         Currency GetByShortcut(string shortcut);
         Currency GetById(Guid id);
-        void Add(Currency currency);
+        void AddCurrency(Currency currency);
+        void UpdateCurrency(Currency currency);
+        void DeleteCurrency(Guid currencyId);
     }
 }

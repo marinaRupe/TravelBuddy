@@ -25,6 +25,10 @@ namespace TravelBuddy.Models
         public Travel() : base()
         {
             Description = "";
+            ActivityList = new List<TravelActivity>();
+            CostList = new List<TravelActivityWithCost>();
+            PreliminaryActivityList = new List<PreliminaryActivity>();
+            ItemList = new List<TravelItem>();
         }
 
         public Travel(string name, DateTime dateStart, DateTime dateEnd) : this()

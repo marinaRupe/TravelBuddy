@@ -22,46 +22,50 @@ namespace TravelBuddy.DAL.Repositories
         public void CreateCurrenciesIfNoneExist()
         {
             var currenciesCount = _currentSession.Query<Currency>().Count();
-            if (currenciesCount == 0)
+            if (currenciesCount != 0) return;
+
+            var currencies = new List<Currency>
             {
-                var currencies = new List<Currency>
+                new Currency
                 {
-                    new Currency
-                    {
-                        Name = "hrvatska kuna",
-                        Shortcut = "HRK"
-                    },
-                    new Currency
-                    {
-                        Name = "američki dolar",
-                        Shortcut = "USD"
-                    },
-                    new Currency
-                    {
-                        Name = "euro",
-                        Shortcut = "EUR"
-                    },
-                    new Currency
-                    {
-                        Name = "australski dolar",
-                        Shortcut = "AUD"
-                    },
-                    new Currency
-                    {
-                        Name = "britanska funta",
-                        Shortcut = "GBP"
-                    },
-                    new Currency
-                    {
-                        Name = "kanadski dolar",
-                        Shortcut = "CAD"
-                    },
-                    new Currency
-                    {
-                        Name = "švicarski franak",
-                        Shortcut = "CHF"
-                    },
-                };
+                    Name = "hrvatska kuna",
+                    Shortcut = "HRK"
+                },
+                new Currency
+                {
+                    Name = "američki dolar",
+                    Shortcut = "USD"
+                },
+                new Currency
+                {
+                    Name = "euro",
+                    Shortcut = "EUR"
+                },
+                new Currency
+                {
+                    Name = "australski dolar",
+                    Shortcut = "AUD"
+                },
+                new Currency
+                {
+                    Name = "britanska funta",
+                    Shortcut = "GBP"
+                },
+                new Currency
+                {
+                    Name = "kanadski dolar",
+                    Shortcut = "CAD"
+                },
+                new Currency
+                {
+                    Name = "švicarski franak",
+                    Shortcut = "CHF"
+                }
+            };
+
+            foreach (var curr in currencies)
+            {
+                _currentSession.Save(curr);
             }
         }
 
@@ -80,9 +84,24 @@ namespace TravelBuddy.DAL.Repositories
             return _currentSession.Get<Currency>(id);
         }
 
-        public void Add(Currency currency)
+        public void AddCurrency(Currency currency)
         {
             _currentSession.Save(currency);
+        }
+
+        public void UpdateCurrency(Currency currency)
+        {
+            _currentSession.Update(currency);
+        }
+
+        public void DeleteCurrency(Guid currencyId)
+        {
+            var currency = _currentSession.Get<Travel>(currencyId);
+
+            if (currency != null)
+            {
+                _currentSession.Delete(currency);
+            }
         }
     }
 }

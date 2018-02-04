@@ -26,6 +26,7 @@ namespace TravelBuddy.Models
 
         public User() : base()
         {
+            Travels = new List<Travel>();
         }
 
         public User(string username, string email, string password) : this()
