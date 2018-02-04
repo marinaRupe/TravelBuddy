@@ -19,7 +19,7 @@ namespace TravelBuddy.DAL
 
         private SessionFactory()
         {
-            string databaseName = "TravelBuddy.db";
+            var databaseName = "TravelBuddy.db";
             var fluentConfig = Fluently.Configure()
                 .Database(SQLiteConfiguration.Standard.ConnectionString("Data Source=" + databaseName + ";Version=3").AdoNetBatchSize(1)
                 .ShowSql().FormatSql())

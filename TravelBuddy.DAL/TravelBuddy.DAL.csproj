@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IUnitOfWork.cs" />
     <Compile Include="Mappings\ActivityMap.cs" />
     <Compile Include="Mappings\CurrencyMap.cs" />
     <Compile Include="Mappings\PreliminaryActivityMap.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="SessionFactory.cs" />
     <Compile Include="Repositories\TravelRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">

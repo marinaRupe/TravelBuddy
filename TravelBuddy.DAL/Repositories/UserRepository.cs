@@ -9,35 +9,36 @@ namespace TravelBuddy.DAL.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly ISession _currentSession;
+        private readonly IUnitOfWork _unitOfWork;
+        protected ISession Session => _unitOfWork.Session;
 
-        public UserRepository(ISession session)
+        public UserRepository(IUnitOfWork unitOfWork)
         {
-            _currentSession = session;
+            _unitOfWork = unitOfWork;
         }
 
         public User GetUser(Guid userId)
         {
-            return _currentSession.Get<User>(userId);
+            return Session.Get<User>(userId);
         }
 
         public void AddUser(User user)
         {
-            _currentSession.Save(user);
+            Session.Save(user);
         }
 
         public void UpdateUser(User user)
         {
-            _currentSession.Update(user);
+            Session.Update(user);
         }
 
         public void DeleteUser(Guid userId)
         {
-            var user = _currentSession.Get<Travel>(userId);
+            var user = Session.Get<Travel>(userId);
 
             if (user != null)
             {
-                _currentSession.Delete(user);
+                Session.Delete(user);
             }
         }
     }

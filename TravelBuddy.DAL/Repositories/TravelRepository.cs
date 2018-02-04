@@ -11,40 +11,41 @@ namespace TravelBuddy.DAL.Repositories
 {
     public class TravelRepository : ITravelRepository
     {
-        private readonly ISession _currentSession;
+        private readonly IUnitOfWork _unitOfWork;
+        protected ISession Session => _unitOfWork.Session;
 
-        public TravelRepository(ISession session)
+        public TravelRepository(IUnitOfWork unitOfWork)
         {
-            _currentSession = session;
+            _unitOfWork = unitOfWork;
         }
 
         public Travel GetTravel(Guid travelId)
         {
-            return _currentSession.Get<Travel>(travelId);
+            return Session.Get<Travel>(travelId);
         }
 
         public void AddTravel(Travel travel)
         {
-            _currentSession.Save(travel);
+            Session.Save(travel);
         }
 
         public void UpdateTravel(Travel travel)
         {
-            _currentSession.Update(travel);
+            Session.Update(travel);
         }
         public void DeleteTravel(Guid travelId)
         {
-            var travel = _currentSession.Get<Travel>(travelId);
+            var travel = Session.Get<Travel>(travelId);
 
             if (travel != null)
             {
-                _currentSession.Delete(travel);
+                Session.Delete(travel);
             }
         }
 
         public void AddActivityToCosts(Guid travelId, TravelActivity activity, MoneyValue cost)
         {
-            var travel = _currentSession.Get<Travel>(travelId);
+            var travel = Session.Get<Travel>(travelId);
             var activityWithCost = new TravelActivityWithCost
             {
                 Name = activity.Name,
@@ -58,12 +59,12 @@ namespace TravelBuddy.DAL.Repositories
             travel.CostList.Add(activityWithCost);
             travel.ActivityList.Remove(activity);
 
-            _currentSession.Update(travel);
+            Session.Update(travel);
         }
 
         public void RemoveActivityFromCosts(Guid travelId, TravelActivityWithCost activityWithCost)
         {
-            var travel = _currentSession.Get<Travel>(travelId);
+            var travel = Session.Get<Travel>(travelId);
             var activity = new TravelActivity
             {
                 Name = activityWithCost.Name,
@@ -76,7 +77,7 @@ namespace TravelBuddy.DAL.Repositories
             travel.ActivityList.Add(activity);
             travel.CostList.Remove(activityWithCost);
 
-            _currentSession.Update(travel);
+            Session.Update(travel);
         }
     }
 }

@@ -12,16 +12,17 @@ namespace TravelBuddy.DAL.Repositories
 {
     public class CurrencyRepository : ICurrencyRepository
     {
-        private readonly ISession _currentSession;
+        private readonly IUnitOfWork _unitOfWork;
+        protected ISession Session => _unitOfWork.Session;
 
-        public CurrencyRepository(ISession session)
+        public CurrencyRepository(IUnitOfWork unitOfWork)
         {
-            _currentSession = session;
+            _unitOfWork = unitOfWork;
         }
 
         public void CreateCurrenciesIfNoneExist()
         {
-            var currenciesCount = _currentSession.Query<Currency>().Count();
+            var currenciesCount = Session.Query<Currency>().Count();
             if (currenciesCount != 0) return;
 
             var currencies = new List<Currency>
@@ -65,42 +66,42 @@ namespace TravelBuddy.DAL.Repositories
 
             foreach (var curr in currencies)
             {
-                _currentSession.Save(curr);
+                Session.Save(curr);
             }
         }
 
         public IList<Currency> GetAll()
         {
-            return _currentSession.Query<Currency>().ToList();
+            return Session.Query<Currency>().ToList();
         }
 
         public Currency GetByShortcut(string shortcut)
         {
-            return _currentSession.Query<Currency>().SingleOrDefault(c => c.Shortcut == shortcut);
+            return Session.Query<Currency>().SingleOrDefault(c => c.Shortcut == shortcut);
         }
 
         public Currency GetById(Guid id)
         {
-            return _currentSession.Get<Currency>(id);
+            return Session.Get<Currency>(id);
         }
 
         public void AddCurrency(Currency currency)
         {
-            _currentSession.Save(currency);
+            Session.Save(currency);
         }
 
         public void UpdateCurrency(Currency currency)
         {
-            _currentSession.Update(currency);
+            Session.Update(currency);
         }
 
         public void DeleteCurrency(Guid currencyId)
         {
-            var currency = _currentSession.Get<Travel>(currencyId);
+            var currency = Session.Get<Travel>(currencyId);
 
             if (currency != null)
             {
-                _currentSession.Delete(currency);
+                Session.Delete(currency);
             }
         }
     }
