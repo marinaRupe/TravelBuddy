@@ -80,7 +80,7 @@ namespace TravelBuddy.WebApp.Controllers
                 var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
                 var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
                 unitOfWork.BeginTransaction();
-                var domainUser = userRepository.GetUserByEmail(model.Email);
+                var domainUser = userRepository.GetUserByEmail(model.Email) ?? userRepository.GetUserByUsername(model.Username);
                 var correctPassword = domainUser.IsSamePassword(model.Password);
                 unitOfWork.Commit();
                 if (!correctPassword)

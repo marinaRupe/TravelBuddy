@@ -164,5 +164,37 @@ namespace TravelBuddy.DAL.Repositories.Tests
             Assert.AreEqual(1, _repository.GetTravel(travel.Id).ActivityList.Count);
             Assert.AreEqual(0, _repository.GetTravel(travel.Id).CostList.Count);
         }
+
+        [TestMethod()]
+        public void BudgetEagerLoadingTest()
+        {
+            var bitcoin = new Currency
+            {
+                Name = "bitcoin",
+                Shortcut = "BTC"
+            };
+            _unitOfWork.Session.Save(bitcoin);
+            var travel = new Travel
+            {
+                Name = "My Travel",
+                Budget = new MoneyValue
+                {
+                    Value = 24.0,
+                    Currency = bitcoin
+                }
+            };
+            _repository.AddTravel(travel);
+
+            CloseTestSession();
+
+            OpenTestSession();
+            var loadedTravel = _repository.GetTravel(travel.Id);
+            CloseTestSession();
+
+            Assert.AreEqual(bitcoin.Shortcut, loadedTravel.Budget.Currency.Shortcut);
+
+            OpenTestSession();
+            _unitOfWork.Session.Delete(bitcoin);
+        }
     }
 }
