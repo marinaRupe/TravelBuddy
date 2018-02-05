@@ -72,5 +72,14 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
 
             _travelController.EditTravel(travelModel);
         }
+
+        private void deleteTravelBtn_Click(object sender, EventArgs e)
+        {
+            var travel = travelListBox.SelectedItem as Travel;
+
+            if (travel == null) return;
+
+            _travelController.DeleteTravel(travel.Id);
+        }
     }
 }
