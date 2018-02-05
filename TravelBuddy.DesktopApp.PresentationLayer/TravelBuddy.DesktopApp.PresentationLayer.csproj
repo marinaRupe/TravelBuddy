@@ -63,22 +63,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddTravel.cs">
+    <Compile Include="TravelLists\AddPreliminaryActivity.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddTravel.Designer.cs">
+    <Compile Include="TravelLists\AddPreliminaryActivity.Designer.cs">
+      <DependentUpon>AddPreliminaryActivity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TravelLists\AddTravelItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TravelLists\AddTravelItem.Designer.cs">
+      <DependentUpon>AddTravelItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Travel\AddTravel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Travel\AddTravel.Designer.cs">
       <DependentUpon>AddTravel.cs</DependentUpon>
     </Compile>
-    <Compile Include="CostList.cs">
+    <Compile Include="TravelLists\CostList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CostList.Designer.cs">
+    <Compile Include="TravelLists\CostList.Designer.cs">
       <DependentUpon>CostList.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditTravel.cs">
+    <Compile Include="Travel\EditTravel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditTravel.Designer.cs">
+    <Compile Include="Travel\EditTravel.Designer.cs">
       <DependentUpon>EditTravel.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -93,10 +105,10 @@
     <Compile Include="MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="PreliminaryActivityList.cs">
+    <Compile Include="TravelLists\PreliminaryActivityList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PreliminaryActivityList.Designer.cs">
+    <Compile Include="TravelLists\PreliminaryActivityList.Designer.cs">
       <DependentUpon>PreliminaryActivityList.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -107,38 +119,44 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
-    <Compile Include="TravelActivityList.cs">
+    <Compile Include="TravelLists\TravelActivityList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TravelActivityList.Designer.cs">
+    <Compile Include="TravelLists\TravelActivityList.Designer.cs">
       <DependentUpon>TravelActivityList.cs</DependentUpon>
     </Compile>
-    <Compile Include="TravelDetails.cs">
+    <Compile Include="Travel\TravelDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TravelDetails.Designer.cs">
+    <Compile Include="Travel\TravelDetails.Designer.cs">
       <DependentUpon>TravelDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="TravelItemList.cs">
+    <Compile Include="TravelLists\TravelItemList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TravelItemList.Designer.cs">
+    <Compile Include="TravelLists\TravelItemList.Designer.cs">
       <DependentUpon>TravelItemList.cs</DependentUpon>
     </Compile>
-    <Compile Include="TravelList.cs">
+    <Compile Include="Travel\TravelList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TravelList.Designer.cs">
+    <Compile Include="Travel\TravelList.Designer.cs">
       <DependentUpon>TravelList.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowFormsFactory.cs" />
-    <EmbeddedResource Include="AddTravel.resx">
+    <EmbeddedResource Include="TravelLists\AddPreliminaryActivity.resx">
+      <DependentUpon>AddPreliminaryActivity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TravelLists\AddTravelItem.resx">
+      <DependentUpon>AddTravelItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Travel\AddTravel.resx">
       <DependentUpon>AddTravel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CostList.resx">
+    <EmbeddedResource Include="TravelLists\CostList.resx">
       <DependentUpon>CostList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditTravel.resx">
+    <EmbeddedResource Include="Travel\EditTravel.resx">
       <DependentUpon>EditTravel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
@@ -147,7 +165,7 @@
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PreliminaryActivityList.resx">
+    <EmbeddedResource Include="TravelLists\PreliminaryActivityList.resx">
       <DependentUpon>PreliminaryActivityList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -162,16 +180,16 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TravelActivityList.resx">
+    <EmbeddedResource Include="TravelLists\TravelActivityList.resx">
       <DependentUpon>TravelActivityList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TravelDetails.resx">
+    <EmbeddedResource Include="Travel\TravelDetails.resx">
       <DependentUpon>TravelDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TravelItemList.resx">
+    <EmbeddedResource Include="TravelLists\TravelItemList.resx">
       <DependentUpon>TravelItemList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TravelList.resx">
+    <EmbeddedResource Include="Travel\TravelList.resx">
       <DependentUpon>TravelList.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
