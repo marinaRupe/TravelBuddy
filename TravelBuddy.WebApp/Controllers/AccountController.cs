@@ -73,33 +73,28 @@ namespace TravelBuddy.WebApp.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
-            ViewData["PersonalError"] = null;
 
             if (ModelState.IsValid && DomainUserExists(model.Username, model.Email))
             {
+                // check domain model user
+                var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+                var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
+                unitOfWork.BeginTransaction();
+                var domainUser = userRepository.GetUserByEmail(model.Email);
+                var correctPassword = domainUser.IsSamePassword(model.Password);
+                unitOfWork.Commit();
+                if (!correctPassword)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    _logger.LogInformation($"Incorrect password by {domainUser.Username}");
+                    return View(model);
+                }
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(domainUser.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    Console.WriteLine("succeed");
-                    // check domain model user
-                    var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
-                    var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
-                    unitOfWork.BeginTransaction();
-                    var domainUser = userRepository.GetUserByEmail(model.Email);
-                    var correctPassword = domainUser.IsSamePassword(model.Password);
-                    unitOfWork.Commit();
-                    Console.WriteLine("commit");
-                    if (!correctPassword)
-                    {
-                        ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-                        ViewData["PersonalError"] = "Incorrect password!";
-                        _logger.LogInformation($"Incorrect password by {domainUser.Username}");
-                        return View(model);
-                    }
-                    Console.WriteLine("continue");
-
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
