@@ -23,8 +23,8 @@ namespace TravelBuddy.DAL.Mappings
                 mapping =>
                 {
                     mapping.Map(y => y.Value);
-                    mapping.References(y => y.Currency);
-                });
+                    mapping.References(y => y.Currency).Not.LazyLoad();
+                }).Not.LazyLoad();
 
             References(x => x.Traveller);
 

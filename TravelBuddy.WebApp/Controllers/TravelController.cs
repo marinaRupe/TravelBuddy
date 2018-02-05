@@ -8,21 +8,32 @@ using System.Threading.Tasks;
 using TravelBuddy.BaseLib.Factories;
 using TravelBuddy.Models;
 using TravelBuddy.WebApp.Models;
+using TravelBuddy.WebApp.Models.TravelViewModels;
 
 namespace TravelBuddy.WebApp.Controllers
 {
     [Authorize]
     [Route("[controller]/[action]")]
-    public class TravelsController : Controller
+    public class TravelController : Controller
     {
         private readonly UserManager<ApplicationUser> _userManager;
 
-        public TravelsController(UserManager<ApplicationUser> userManager)
+        public TravelController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
+        {
+            var user = await GetCurrentDomainUserAsync();
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            unitOfWork.BeginTransaction();
+            var travels = user.Travels.Select(t => new TravelViewModel(t));
+            unitOfWork.Commit();
+            return View(travels);
+        }
+
+        public IActionResult Create()
         {
             return View();
         }
