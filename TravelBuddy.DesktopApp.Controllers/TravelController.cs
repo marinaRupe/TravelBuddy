@@ -39,7 +39,7 @@ namespace TravelBuddy.DesktopApp.Controllers
                     Description = travel.Description,
                     DateStart = travel.DateStart,
                     DateEnd = travel.DateEnd,
-                    Budget = null//travel.Budget
+                    Budget = travel.Budget
                 };
 
                 unitOfWork.Commit();
@@ -70,6 +70,102 @@ namespace TravelBuddy.DesktopApp.Controllers
                 addTravelView.ShowModaless();
 
                 unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
+        public void OpenTravelItemListWindow(Guid travelId)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var travel = travelRepository.GetTravel(travelId);
+                var travelItemList = new List<TravelItem>(travel.ItemList);
+
+                unitOfWork.Commit();
+
+                _formsFactory.CreateTravelItemListView(this, travelItemList).ShowModaless();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
+        public void OpenPreliminaryListWindow(Guid travelId)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var travel = travelRepository.GetTravel(travelId);
+                var preliminaryList = new List<PreliminaryActivity>(travel.PreliminaryActivityList);
+
+                unitOfWork.Commit();
+
+                _formsFactory.CreatePreliminaryActivityListView(this, preliminaryList).ShowModaless();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
+        public void OpenCostListWindow(Guid travelId)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var travel = travelRepository.GetTravel(travelId);
+                var costList = new List<TravelActivityWithCost>(travel.CostList);
+
+                unitOfWork.Commit();
+
+                _formsFactory.CreateCostListView(this, costList).ShowModaless();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
+        public void OpenTravelActivityListWindow(Guid travelId)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var travel = travelRepository.GetTravel(travelId);
+                var travelActivityList = new List<TravelActivity>(travel.ActivityList);
+
+                unitOfWork.Commit();
+
+                _formsFactory.CreateTravelActivityListView(this, travelActivityList).ShowModaless();
             }
             catch (Exception ex)
             {

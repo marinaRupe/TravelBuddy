@@ -15,9 +15,15 @@ namespace TravelBuddy.BaseLib
         ILoginView CreateLoginView(IMainController mainController);
         IRegisterView CreateRegisterView(IMainController mainController);
         IMainView CreateMainView(IMainController mainController);
+
         ITravelListView CreateTravelListView(ITravelController travelController, IList<Travel> travels);
         ITravelDetailsView CreateTravelDetailsView(ITravelController travelController, TravelViewModel travelModel);
         IEditTravelView CreateEditTravelView(ITravelController travelController, EditTravelViewModel model, IList<Currency> currencyList);
         IAddTravelView CreateAddTravelView(ITravelController travelController, IList<Currency> currencyList);
+
+        ITravelItemListView CreateTravelItemListView(ITravelController travelController, IList<TravelItem> travelItemList);
+        ITravelActivityListView CreateTravelActivityListView(ITravelController travelController, IList<TravelActivity> travelActivityList);
+        IPreliminaryActivityListView CreatePreliminaryActivityListView(ITravelController travelController,IList<PreliminaryActivity> preliminaryActivityList);
+        ICostListView CreateCostListView(ITravelController travelController, IList<TravelActivityWithCost> costList);
     }
 }

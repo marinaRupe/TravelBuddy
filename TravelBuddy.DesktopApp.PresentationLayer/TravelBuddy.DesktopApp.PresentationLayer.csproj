@@ -135,6 +135,9 @@
     <EmbeddedResource Include="AddTravel.resx">
       <DependentUpon>AddTravel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CostList.resx">
+      <DependentUpon>CostList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditTravel.resx">
       <DependentUpon>EditTravel.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreliminaryActivityList.resx">
+      <DependentUpon>PreliminaryActivityList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -156,8 +162,14 @@
     <EmbeddedResource Include="Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TravelActivityList.resx">
+      <DependentUpon>TravelActivityList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TravelDetails.resx">
       <DependentUpon>TravelDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TravelItemList.resx">
+      <DependentUpon>TravelItemList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TravelList.resx">
       <DependentUpon>TravelList.cs</DependentUpon>

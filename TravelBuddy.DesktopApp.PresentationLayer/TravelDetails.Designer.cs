@@ -30,7 +30,6 @@
         {
             this.dateEndPicker = new System.Windows.Forms.DateTimePicker();
             this.dateStartPicker = new System.Windows.Forms.DateTimePicker();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,7 +38,6 @@
             this.nameOutput = new System.Windows.Forms.Label();
             this.descriptionOutput = new System.Windows.Forms.Label();
             this.budgetOutput = new System.Windows.Forms.Label();
-            this.currencyOutput = new System.Windows.Forms.Label();
             this.travelItemListBtn = new System.Windows.Forms.Button();
             this.preliminaryActivityListBtn = new System.Windows.Forms.Button();
             this.CostListBtn = new System.Windows.Forms.Button();
@@ -59,16 +57,6 @@
             this.dateStartPicker.Name = "dateStartPicker";
             this.dateStartPicker.Size = new System.Drawing.Size(200, 20);
             this.dateStartPicker.TabIndex = 29;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(19, 228);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 17);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Valuta";
             // 
             // label5
             // 
@@ -150,20 +138,10 @@
             this.budgetOutput.TabIndex = 36;
             this.budgetOutput.Text = "Budžet";
             // 
-            // currencyOutput
-            // 
-            this.currencyOutput.AutoSize = true;
-            this.currencyOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.currencyOutput.Location = new System.Drawing.Point(107, 228);
-            this.currencyOutput.Name = "currencyOutput";
-            this.currencyOutput.Size = new System.Drawing.Size(48, 17);
-            this.currencyOutput.TabIndex = 37;
-            this.currencyOutput.Text = "Valuta";
-            // 
             // travelItemListBtn
             // 
             this.travelItemListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.travelItemListBtn.Location = new System.Drawing.Point(21, 271);
+            this.travelItemListBtn.Location = new System.Drawing.Point(21, 240);
             this.travelItemListBtn.Name = "travelItemListBtn";
             this.travelItemListBtn.Size = new System.Drawing.Size(149, 32);
             this.travelItemListBtn.TabIndex = 38;
@@ -174,7 +152,7 @@
             // preliminaryActivityListBtn
             // 
             this.preliminaryActivityListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.preliminaryActivityListBtn.Location = new System.Drawing.Point(220, 271);
+            this.preliminaryActivityListBtn.Location = new System.Drawing.Point(220, 240);
             this.preliminaryActivityListBtn.Name = "preliminaryActivityListBtn";
             this.preliminaryActivityListBtn.Size = new System.Drawing.Size(149, 32);
             this.preliminaryActivityListBtn.TabIndex = 39;
@@ -185,7 +163,7 @@
             // CostListBtn
             // 
             this.CostListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CostListBtn.Location = new System.Drawing.Point(20, 321);
+            this.CostListBtn.Location = new System.Drawing.Point(20, 290);
             this.CostListBtn.Name = "CostListBtn";
             this.CostListBtn.Size = new System.Drawing.Size(149, 32);
             this.CostListBtn.TabIndex = 40;
@@ -196,7 +174,7 @@
             // ActivityListBtn
             // 
             this.ActivityListBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivityListBtn.Location = new System.Drawing.Point(220, 321);
+            this.ActivityListBtn.Location = new System.Drawing.Point(220, 290);
             this.ActivityListBtn.Name = "ActivityListBtn";
             this.ActivityListBtn.Size = new System.Drawing.Size(149, 32);
             this.ActivityListBtn.TabIndex = 41;
@@ -208,18 +186,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 364);
+            this.ClientSize = new System.Drawing.Size(397, 340);
             this.Controls.Add(this.ActivityListBtn);
             this.Controls.Add(this.CostListBtn);
             this.Controls.Add(this.preliminaryActivityListBtn);
             this.Controls.Add(this.travelItemListBtn);
-            this.Controls.Add(this.currencyOutput);
             this.Controls.Add(this.budgetOutput);
             this.Controls.Add(this.descriptionOutput);
             this.Controls.Add(this.nameOutput);
             this.Controls.Add(this.dateEndPicker);
             this.Controls.Add(this.dateStartPicker);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -235,7 +211,6 @@
         #endregion
         private System.Windows.Forms.DateTimePicker dateEndPicker;
         private System.Windows.Forms.DateTimePicker dateStartPicker;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -244,7 +219,6 @@
         private System.Windows.Forms.Label nameOutput;
         private System.Windows.Forms.Label descriptionOutput;
         private System.Windows.Forms.Label budgetOutput;
-        private System.Windows.Forms.Label currencyOutput;
         private System.Windows.Forms.Button travelItemListBtn;
         private System.Windows.Forms.Button preliminaryActivityListBtn;
         private System.Windows.Forms.Button CostListBtn;

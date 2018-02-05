@@ -28,11 +28,58 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.addButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.listBox = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
+            // 
+            // addButton
+            // 
+            this.addButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addButton.Location = new System.Drawing.Point(25, 231);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(103, 38);
+            this.addButton.TabIndex = 11;
+            this.addButton.Text = "Dodaj";
+            this.addButton.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(73, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(301, 31);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Popis aktivnosti na putu";
+            // 
+            // listBox
+            // 
+            this.listBox.FormattingEnabled = true;
+            this.listBox.Location = new System.Drawing.Point(25, 71);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(394, 134);
+            this.listBox.TabIndex = 9;
+            // 
+            // TravelActivityList
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "TravelActivityList";
+            this.ClientSize = new System.Drawing.Size(445, 289);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.listBox);
+            this.Name = "TravelActivityList";
+            this.Text = "TravelBuddy - Popis aktivnosti na putu";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button addButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox listBox;
     }
 }

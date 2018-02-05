@@ -27,6 +27,8 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
 
         private void UpdateList()
         {
+            listBox.DataSource = _preliminaryActivityList;
+            listBox.ValueMember = "Name";
         }
 
         public void ShowModaless()

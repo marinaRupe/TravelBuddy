@@ -33,7 +33,8 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             return new TravelList(travelController, travels);
         }
 
-        public ITravelDetailsView CreateTravelDetailsView(ITravelController travelController, TravelViewModel travelModel)
+        public ITravelDetailsView CreateTravelDetailsView(ITravelController travelController,
+            TravelViewModel travelModel)
         {
             return new TravelDetails(travelController, travelModel);
         }
@@ -43,9 +44,33 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             return new AddTravel(travelController, currencyList);
         }
 
-        public IEditTravelView CreateEditTravelView(ITravelController travelController, EditTravelViewModel model, IList<Currency> currencyList)
+        public IEditTravelView CreateEditTravelView(ITravelController travelController, EditTravelViewModel model,
+            IList<Currency> currencyList)
         {
             return new EditTravel(travelController, model, currencyList);
+        }
+
+        public ITravelItemListView CreateTravelItemListView(ITravelController travelController,
+            IList<TravelItem> travelItemList)
+        {
+            return new TravelItemList(travelController, travelItemList);
+        }
+
+        public ITravelActivityListView CreateTravelActivityListView(ITravelController travelController,
+            IList<TravelActivity> travelActivityList)
+        {
+            return new TravelActivityList(travelController, travelActivityList);
+        }
+
+        public IPreliminaryActivityListView CreatePreliminaryActivityListView(ITravelController travelController,
+            IList<PreliminaryActivity> preliminaryActivityList)
+        {
+            return new PreliminaryActivityList(travelController, preliminaryActivityList);
+        }
+
+        public ICostListView CreateCostListView(ITravelController travelController, IList<TravelActivityWithCost> costList)
+        {
+            return new CostList(travelController, costList);
         }
     }
 }

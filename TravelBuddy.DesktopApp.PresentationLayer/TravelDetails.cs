@@ -36,8 +36,7 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             dateEndPicker.Value = _travelModel.DateStart;
             dateEndPicker.Enabled = false;
 
-            //budgetOutput.Text = _travelModel.Budget.Value.ToString();
-            //currencyOutput.Text = $"{_travelModel.Budget.Currency} ({_travelModel.Budget.Currency.Shortcut})";
+            budgetOutput.Text = $"{_travelModel.Budget.Value} {_travelModel.Budget.Currency.Shortcut}";
         }
 
         public void ShowModaless()
@@ -49,22 +48,22 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
 
         private void travelItemListBtn_Click(object sender, EventArgs e)
         {
-
+            _travelController.OpenTravelItemListWindow(_travelModel.Id);
         }
 
         private void preliminaryActivityListBtn_Click(object sender, EventArgs e)
         {
-
+            _travelController.OpenPreliminaryListWindow(_travelModel.Id);
         }
 
         private void CostListBtn_Click(object sender, EventArgs e)
         {
-
+            _travelController.OpenCostListWindow(_travelModel.Id);
         }
 
         private void ActivityListBtn_Click(object sender, EventArgs e)
         {
-
+            _travelController.OpenTravelActivityListWindow(_travelModel.Id);
         }
     }
 }
