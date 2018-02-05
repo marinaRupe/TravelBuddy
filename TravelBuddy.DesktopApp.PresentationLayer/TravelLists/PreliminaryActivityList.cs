@@ -39,5 +39,10 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
 
             Show();
         }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            _travelController.OpenAddPreliminaryActivityWindow(_travelId);
+        }
     }
 }

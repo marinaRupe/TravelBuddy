@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddPreliminaryActivityViewModel.cs" />
     <Compile Include="AddTravelItemViewModel.cs" />
     <Compile Include="AddTravelViewModel.cs" />
     <Compile Include="EditTravelViewModel.cs" />

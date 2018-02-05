@@ -78,5 +78,10 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
         {
             return new AddTravelItem(travelController, travelId);
         }
+
+        public IAddPreliminaryItemView CreateAddPreliminaryItemView(ITravelController travelController, Guid travelId)
+        {
+            return new AddPreliminaryActivity(travelController, travelId);
+        }
     }
 }

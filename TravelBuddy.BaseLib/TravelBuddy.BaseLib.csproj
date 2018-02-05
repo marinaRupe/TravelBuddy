@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Factories\RepositoriesFactory.cs" />
     <Compile Include="Factories\UnitOfWorkFactory.cs" />
+    <Compile Include="Views\IAddPreliminaryItemView.cs" />
     <Compile Include="Views\IAddTravelItemView.cs" />
     <Compile Include="Views\IAddTravelView.cs" />
     <Compile Include="Views\ICostListView.cs" />

@@ -27,5 +27,6 @@ namespace TravelBuddy.BaseLib
         ICostListView CreateCostListView(ITravelController travelController, IList<TravelActivityWithCost> costList, Guid travelId);
 
         IAddTravelItemView CreateAddTravelItemView(ITravelController travelController, Guid travelId);
+        IAddPreliminaryItemView CreateAddPreliminaryItemView(ITravelController travelController, Guid travelId);
     }
 }

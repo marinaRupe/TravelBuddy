@@ -23,5 +23,7 @@ namespace TravelBuddy.BaseLib
 
         void OpenAddTravelItemWindow(Guid travelId);
         void AddTravelItem(AddTravelItemViewModel travelItemViewModel, Guid travelId);
+        void OpenAddPreliminaryActivityWindow(Guid travelId);
+        void AddPreliminaryActivity(AddPreliminaryActivityViewModel travelItemViewModel, Guid travelId);
     }
 }

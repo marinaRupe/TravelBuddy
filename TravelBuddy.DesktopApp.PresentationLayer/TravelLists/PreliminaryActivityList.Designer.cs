@@ -60,6 +60,7 @@
             this.addButton.TabIndex = 2;
             this.addButton.Text = "Dodaj";
             this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
             // PreliminaryActivityList
             // 

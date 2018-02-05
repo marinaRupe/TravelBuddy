@@ -180,6 +180,11 @@ namespace TravelBuddy.DesktopApp.Controllers
             _formsFactory.CreateAddTravelItemView(this, travelId).ShowModaless();
         }
 
+        public void OpenAddPreliminaryActivityWindow(Guid travelId)
+        {
+            _formsFactory.CreateAddPreliminaryItemView(this, travelId).ShowModaless();
+        }
+
         public void AddTravelItem (AddTravelItemViewModel travelItemViewModel, Guid travelId)
         {
             var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
@@ -195,6 +200,35 @@ namespace TravelBuddy.DesktopApp.Controllers
                     Name = travelItemViewModel.Name,
                     Description = travelItemViewModel.Description,
                     IsTaken = travelItemViewModel.IsTaken
+                });
+
+                travelRepository.UpdateTravel(travel);
+
+                unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
+        public void AddPreliminaryActivity(AddPreliminaryActivityViewModel travelItemViewModel, Guid travelId)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var travel = travelRepository.GetTravel(travelId);
+                travel.PreliminaryActivityList.Add(new PreliminaryActivity
+                {
+                    Name = travelItemViewModel.Name,
+                    Description = travelItemViewModel.Description,
+                    IsCompleted = travelItemViewModel.IsCompleted
                 });
 
                 travelRepository.UpdateTravel(travel);
