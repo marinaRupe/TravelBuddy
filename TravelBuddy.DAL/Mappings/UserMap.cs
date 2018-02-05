@@ -13,8 +13,8 @@ namespace TravelBuddy.DAL.Mappings
         public UserMap()
         {
             Id(x => x.Id).GeneratedBy.Guid();
-            Map(x => x.Username);
-            Map(x => x.Email);
+            Map(x => x.Username).Unique();
+            Map(x => x.Email).Unique();
             Map(x => x.Password);
             HasMany(x => x.Travels);
         }
