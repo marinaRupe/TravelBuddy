@@ -47,7 +47,18 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             var index = travelListBox.IndexFromPoint(e.Location);
             if (index == ListBox.NoMatches) return;
 
-            var travel = (Travel)travelListBox.Items[index];
+            var travel = travelListBox.Items[index] as Travel;
+
+            if (travel == null) return;
+
+            _travelController.OpenTravelDetails(travel.Id);
+        }
+
+        private void editTravelBtn_Click(object sender, EventArgs e)
+        {
+            var travel = travelListBox.SelectedItem as Travel;
+
+            if (travel == null) return;
 
             var travelModel = new EditTravelViewModel
             {

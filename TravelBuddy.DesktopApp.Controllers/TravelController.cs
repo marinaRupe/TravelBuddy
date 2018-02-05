@@ -21,6 +21,40 @@ namespace TravelBuddy.DesktopApp.Controllers
             _formsFactory = formsFactory;
         }
 
+        public void OpenTravelDetails(Guid travelId)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var travel = travelRepository.GetTravel(travelId);
+
+                var travelModal = new TravelViewModel
+                {
+                    Id = travel.Id,
+                    Name = travel.Name,
+                    Description = travel.Description,
+                    DateStart = travel.DateStart,
+                    DateEnd = travel.DateEnd,
+                    Budget = null//travel.Budget
+                };
+
+                unitOfWork.Commit();
+
+                var travelDetailsView = _formsFactory.CreateTravelDetailsView(this, travelModal);
+                travelDetailsView.ShowModaless();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
         public void OpenAddTravelWindow()
         {
             var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();

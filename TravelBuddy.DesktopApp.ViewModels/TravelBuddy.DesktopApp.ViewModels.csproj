@@ -43,6 +43,7 @@
     <Compile Include="AddTravelViewModel.cs" />
     <Compile Include="EditTravelViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TravelViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TravelBuddy.Models\TravelBuddy.Models.csproj">

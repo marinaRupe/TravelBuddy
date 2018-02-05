@@ -48,12 +48,17 @@
     <Compile Include="Factories\RepositoriesFactory.cs" />
     <Compile Include="Factories\UnitOfWorkFactory.cs" />
     <Compile Include="Views\IAddTravelView.cs" />
+    <Compile Include="Views\ICostListView.cs" />
     <Compile Include="Views\IEditTravelView.cs" />
     <Compile Include="Views\ILoginView.cs" />
     <Compile Include="IMainController.cs" />
     <Compile Include="Views\IMainView.cs" />
+    <Compile Include="Views\IPreliminaryActivityListView.cs" />
     <Compile Include="Views\IRegisterView.cs" />
     <Compile Include="ITravelController.cs" />
+    <Compile Include="Views\ITravelActivityListView.cs" />
+    <Compile Include="Views\ITravelDetailsView.cs" />
+    <Compile Include="Views\ITravelItemListView.cs" />
     <Compile Include="Views\ITravelListView.cs" />
     <Compile Include="IWindowFormsFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

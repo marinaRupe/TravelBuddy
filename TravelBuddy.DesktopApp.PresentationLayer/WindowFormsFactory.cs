@@ -33,6 +33,11 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             return new TravelList(travelController, travels);
         }
 
+        public ITravelDetailsView CreateTravelDetailsView(ITravelController travelController, TravelViewModel travelModel)
+        {
+            return new TravelDetails(travelController, travelModel);
+        }
+
         public IAddTravelView CreateAddTravelView(ITravelController travelController, IList<Currency> currencyList)
         {
             return new AddTravel(travelController, currencyList);

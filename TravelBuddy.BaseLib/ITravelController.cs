@@ -14,5 +14,6 @@ namespace TravelBuddy.BaseLib
         void SaveEditedTravel(EditTravelViewModel travelModel);
         void AddTravel(AddTravelViewModel travel);
         void OpenAddTravelWindow();
+        void OpenTravelDetails(Guid travelId);
     }
 }

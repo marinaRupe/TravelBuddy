@@ -31,6 +31,7 @@
             this.travelListBox = new System.Windows.Forms.ListBox();
             this.addTravelBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.editTravelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // travelListBox
@@ -38,16 +39,16 @@
             this.travelListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.travelListBox.FormattingEnabled = true;
             this.travelListBox.ItemHeight = 20;
-            this.travelListBox.Location = new System.Drawing.Point(39, 119);
+            this.travelListBox.Location = new System.Drawing.Point(39, 102);
             this.travelListBox.Name = "travelListBox";
-            this.travelListBox.Size = new System.Drawing.Size(289, 144);
+            this.travelListBox.Size = new System.Drawing.Size(384, 144);
             this.travelListBox.TabIndex = 0;
             this.travelListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.travelListBox_MouseDoubleClick);
             // 
             // addTravelBtn
             // 
             this.addTravelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addTravelBtn.Location = new System.Drawing.Point(329, 23);
+            this.addTravelBtn.Location = new System.Drawing.Point(286, 266);
             this.addTravelBtn.Name = "addTravelBtn";
             this.addTravelBtn.Size = new System.Drawing.Size(137, 39);
             this.addTravelBtn.TabIndex = 2;
@@ -65,11 +66,23 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Lista putovanja";
             // 
+            // editTravelBtn
+            // 
+            this.editTravelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editTravelBtn.Location = new System.Drawing.Point(39, 266);
+            this.editTravelBtn.Name = "editTravelBtn";
+            this.editTravelBtn.Size = new System.Drawing.Size(137, 39);
+            this.editTravelBtn.TabIndex = 4;
+            this.editTravelBtn.Text = "Uredi putovanje";
+            this.editTravelBtn.UseVisualStyleBackColor = true;
+            this.editTravelBtn.Click += new System.EventHandler(this.editTravelBtn_Click);
+            // 
             // TravelList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(488, 298);
+            this.ClientSize = new System.Drawing.Size(465, 331);
+            this.Controls.Add(this.editTravelBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addTravelBtn);
             this.Controls.Add(this.travelListBox);
@@ -85,5 +98,6 @@
         private System.Windows.Forms.ListBox travelListBox;
         private System.Windows.Forms.Button addTravelBtn;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button editTravelBtn;
     }
 }
