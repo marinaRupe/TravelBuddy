@@ -329,5 +329,26 @@ namespace TravelBuddy.DesktopApp.Controllers
                 MessageBox.Show(ex.Message, "TravelBuddy");
             }
         }
+
+        public void DeleteTravel(Guid travelId)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                travelRepository.DeleteTravel(travelId);
+
+                unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
     }
 }

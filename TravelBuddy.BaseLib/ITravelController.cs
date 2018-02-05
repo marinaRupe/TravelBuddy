@@ -13,6 +13,7 @@ namespace TravelBuddy.BaseLib
         void EditTravel(EditTravelViewModel travel);
         void SaveEditedTravel(EditTravelViewModel travelModel);
         void AddTravel(AddTravelViewModel travel);
+        void DeleteTravel(Guid travelId);
         void OpenAddTravelWindow();
         void OpenTravelDetails(Guid travelId);
 

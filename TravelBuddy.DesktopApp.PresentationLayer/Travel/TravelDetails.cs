@@ -33,7 +33,7 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             dateStartPicker.Value = _travelModel.DateStart;
             dateStartPicker.Enabled = false;
 
-            dateEndPicker.Value = _travelModel.DateStart;
+            dateEndPicker.Value = _travelModel.DateEnd;
             dateEndPicker.Enabled = false;
 
             budgetOutput.Text = $"{_travelModel.Budget.Value} {_travelModel.Budget.Currency.Shortcut}";

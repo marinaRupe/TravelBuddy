@@ -32,6 +32,7 @@
             this.addTravelBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.editTravelBtn = new System.Windows.Forms.Button();
+            this.deleteTravelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // travelListBox
@@ -41,14 +42,14 @@
             this.travelListBox.ItemHeight = 20;
             this.travelListBox.Location = new System.Drawing.Point(39, 102);
             this.travelListBox.Name = "travelListBox";
-            this.travelListBox.Size = new System.Drawing.Size(384, 144);
+            this.travelListBox.Size = new System.Drawing.Size(464, 144);
             this.travelListBox.TabIndex = 0;
             this.travelListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.travelListBox_MouseDoubleClick);
             // 
             // addTravelBtn
             // 
             this.addTravelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addTravelBtn.Location = new System.Drawing.Point(286, 266);
+            this.addTravelBtn.Location = new System.Drawing.Point(366, 266);
             this.addTravelBtn.Name = "addTravelBtn";
             this.addTravelBtn.Size = new System.Drawing.Size(137, 39);
             this.addTravelBtn.TabIndex = 2;
@@ -77,11 +78,23 @@
             this.editTravelBtn.UseVisualStyleBackColor = true;
             this.editTravelBtn.Click += new System.EventHandler(this.editTravelBtn_Click);
             // 
+            // deleteTravelBtn
+            // 
+            this.deleteTravelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deleteTravelBtn.Location = new System.Drawing.Point(205, 266);
+            this.deleteTravelBtn.Name = "deleteTravelBtn";
+            this.deleteTravelBtn.Size = new System.Drawing.Size(137, 39);
+            this.deleteTravelBtn.TabIndex = 5;
+            this.deleteTravelBtn.Text = "Izbriši putovanje";
+            this.deleteTravelBtn.UseVisualStyleBackColor = true;
+            this.deleteTravelBtn.Click += new System.EventHandler(this.deleteTravelBtn_Click);
+            // 
             // TravelList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 331);
+            this.ClientSize = new System.Drawing.Size(527, 331);
+            this.Controls.Add(this.deleteTravelBtn);
             this.Controls.Add(this.editTravelBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addTravelBtn);
@@ -99,5 +112,6 @@
         private System.Windows.Forms.Button addTravelBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button editTravelBtn;
+        private System.Windows.Forms.Button deleteTravelBtn;
     }
 }
