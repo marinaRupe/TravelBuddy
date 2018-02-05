@@ -9,19 +9,9 @@ namespace TravelBuddy.Models
     {
         private static HashAlgorithm hashAlgorithm = new SHA512Managed();
 
-        private string _password;
-
         public virtual string Username { get; set; }
         public virtual string Email { get; set; }
-        public virtual string Password
-        {
-            get { return _password; }
-            set
-            {
-                var valueBytes = Encoding.UTF8.GetBytes(value ?? "");
-                _password = Encoding.UTF8.GetString(hashAlgorithm.ComputeHash(valueBytes));
-            }
-        }
+        public virtual byte[] Password { get; set; }
         public virtual IList<Travel> Travels { get; set; }
 
         public User() : base()
@@ -33,14 +23,29 @@ namespace TravelBuddy.Models
         {
             Username = username;
             Email = email;
-            Password = password;
+            SetPassword(password);
+        }
+
+        public virtual void SetPassword(string password)
+        {
+            Password = HashPassword(password);
+        }
+
+        public virtual string GetPassword()
+        {
+            return Encoding.ASCII.GetString(Password);
         }
 
         public virtual bool IsSamePassword(string password)
         {
-            var passwordBytes = Encoding.UTF8.GetBytes(password ?? "");
-            var hashedPassword = Encoding.UTF8.GetString(hashAlgorithm.ComputeHash(passwordBytes));
-            return hashedPassword == _password;
+            var hashedPassword = Encoding.ASCII.GetString(HashPassword(password));
+            return GetPassword() == hashedPassword;
+        }
+
+        private static byte[] HashPassword(string password)
+        {
+            var passwordBytes = Encoding.ASCII.GetBytes(password ?? "");
+            return hashAlgorithm.ComputeHash(passwordBytes);
         }
     }
 }
