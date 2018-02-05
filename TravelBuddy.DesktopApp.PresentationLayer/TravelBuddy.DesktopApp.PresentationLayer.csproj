@@ -69,6 +69,12 @@
     <Compile Include="AddTravel.Designer.cs">
       <DependentUpon>AddTravel.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditTravel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditTravel.Designer.cs">
+      <DependentUpon>EditTravel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,12 @@
     <Compile Include="Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
     </Compile>
+    <Compile Include="TravelDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TravelDetails.Designer.cs">
+      <DependentUpon>TravelDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="TravelList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +110,9 @@
     <Compile Include="WindowFormsFactory.cs" />
     <EmbeddedResource Include="AddTravel.resx">
       <DependentUpon>AddTravel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditTravel.resx">
+      <DependentUpon>EditTravel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

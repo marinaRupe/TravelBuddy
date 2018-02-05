@@ -43,9 +43,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 86);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 20);
+            this.label1.Size = new System.Drawing.Size(110, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Username";
+            this.label1.Text = "Korisničko ime";
             // 
             // label2
             // 
@@ -53,9 +53,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 112);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 20);
+            this.label2.Size = new System.Drawing.Size(64, 20);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Password";
+            this.label2.Text = "Lozinka";
             // 
             // label3
             // 
@@ -69,14 +69,14 @@
             // 
             // usernameInput
             // 
-            this.usernameInput.Location = new System.Drawing.Point(119, 88);
+            this.usernameInput.Location = new System.Drawing.Point(128, 88);
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(185, 20);
             this.usernameInput.TabIndex = 3;
             // 
             // passwordInput
             // 
-            this.passwordInput.Location = new System.Drawing.Point(119, 114);
+            this.passwordInput.Location = new System.Drawing.Point(128, 114);
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(185, 20);
             this.passwordInput.TabIndex = 4;
@@ -87,17 +87,17 @@
             this.registerLabel.AutoSize = true;
             this.registerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.registerLabel.ForeColor = System.Drawing.Color.Navy;
-            this.registerLabel.Location = new System.Drawing.Point(228, 232);
+            this.registerLabel.Location = new System.Drawing.Point(132, 232);
             this.registerLabel.Name = "registerLabel";
-            this.registerLabel.Size = new System.Drawing.Size(131, 20);
+            this.registerLabel.Size = new System.Drawing.Size(227, 20);
             this.registerLabel.TabIndex = 5;
-            this.registerLabel.Text = "Need to register?";
+            this.registerLabel.Text = "Nemate račun? Registirajte se.";
             this.registerLabel.Click += new System.EventHandler(this.registerLabel_Click);
             // 
             // loginBtn
             // 
             this.loginBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginBtn.Location = new System.Drawing.Point(119, 162);
+            this.loginBtn.Location = new System.Drawing.Point(128, 162);
             this.loginBtn.Name = "loginBtn";
             this.loginBtn.Size = new System.Drawing.Size(87, 26);
             this.loginBtn.TabIndex = 7;
@@ -118,7 +118,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Login";
-            this.Text = "Login";
+            this.Text = "TravelBuddy - Login";
             this.ResumeLayout(false);
             this.PerformLayout();
 

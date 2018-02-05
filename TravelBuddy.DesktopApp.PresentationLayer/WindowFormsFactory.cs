@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TravelBuddy.BaseLib;
+using TravelBuddy.BaseLib.Views;
+using TravelBuddy.DesktopApp.ViewModels;
 using TravelBuddy.Models;
 using TravelBuddy.Models.Repositories;
 
@@ -31,9 +33,14 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             return new TravelList(travelController, travels);
         }
 
-        public IAddTravelView CreateAddTravelView(ITravelController travelController)
+        public IAddTravelView CreateAddTravelView(ITravelController travelController, IList<Currency> currencyList)
         {
-            return new AddTravel(travelController);
+            return new AddTravel(travelController, currencyList);
+        }
+
+        public IEditTravelView CreateEditTravelView(ITravelController travelController, EditTravelViewModel model, IList<Currency> currencyList)
+        {
+            return new EditTravel(travelController, model, currencyList);
         }
     }
 }

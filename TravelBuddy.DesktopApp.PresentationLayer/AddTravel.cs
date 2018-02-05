@@ -16,36 +16,46 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
     public partial class AddTravel : Form, IAddTravelView
     {
         private readonly ITravelController _travelController;
-        public AddTravel(ITravelController travelController)
+        private readonly IList<Currency> _currencyList;
+        public AddTravel(ITravelController travelController, IList<Currency> currencyList)
         {
             _travelController = travelController;
+            _currencyList = currencyList;
 
             InitializeComponent();
         }
 
         private void addTravelBtn_Click(object sender, EventArgs e)
         {
+            Hide();
+
             var travel = new AddTravelViewModel
             {
                 Name = travelNameInput.Text,
                 Description = descriptionInput.Text,
                 DateStart = dateStartPicker.Value,
                 DateEnd = dateEndPicker.Value,
-                Budget = null
-                /*
                 Budget = new MoneyValue
                 {
-                    Value = 500,
-                    Currency = new Currency()
+                    Value = (double)budgetInput.Value,
+                    Currency = currencyListBox.SelectedItem as Currency
                 }
-                */
             };
 
             _travelController.AddTravel(travel);
         }
 
+        public void UpdateCurrencyList()
+        {
+            budgetInput.Maximum = decimal.MaxValue;
+            currencyListBox.DataSource = _currencyList;
+            currencyListBox.ValueMember = "Shortcut";
+        }
+
         public void ShowModaless()
         {
+            UpdateCurrencyList();
+
             Show();
         }
     }

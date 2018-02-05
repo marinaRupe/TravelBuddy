@@ -44,13 +44,13 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(118, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(116, 31);
+            this.label1.Size = new System.Drawing.Size(157, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Register";
+            this.label1.Text = "Registracija";
             // 
             // usernameInput
             // 
-            this.usernameInput.Location = new System.Drawing.Point(120, 65);
+            this.usernameInput.Location = new System.Drawing.Point(128, 63);
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(185, 20);
             this.usernameInput.TabIndex = 4;
@@ -61,9 +61,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 63);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.Size = new System.Drawing.Size(110, 20);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Username";
+            this.label2.Text = "Korisničko ime";
             // 
             // label3
             // 
@@ -71,9 +71,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(12, 119);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 20);
+            this.label3.Size = new System.Drawing.Size(64, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Password";
+            this.label3.Text = "Lozinka";
             // 
             // label4
             // 
@@ -87,7 +87,7 @@
             // 
             // passwordInput
             // 
-            this.passwordInput.Location = new System.Drawing.Point(120, 121);
+            this.passwordInput.Location = new System.Drawing.Point(128, 121);
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(185, 20);
             this.passwordInput.TabIndex = 9;
@@ -96,17 +96,17 @@
             // registerButton
             // 
             this.registerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.registerButton.Location = new System.Drawing.Point(120, 167);
+            this.registerButton.Location = new System.Drawing.Point(128, 167);
             this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(90, 30);
+            this.registerButton.Size = new System.Drawing.Size(131, 30);
             this.registerButton.TabIndex = 10;
-            this.registerButton.Text = "Register";
+            this.registerButton.Text = "Registriraj se";
             this.registerButton.UseVisualStyleBackColor = true;
             this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // emailInput
             // 
-            this.emailInput.Location = new System.Drawing.Point(120, 95);
+            this.emailInput.Location = new System.Drawing.Point(128, 93);
             this.emailInput.Name = "emailInput";
             this.emailInput.Size = new System.Drawing.Size(185, 20);
             this.emailInput.TabIndex = 11;
@@ -125,7 +125,7 @@
             this.Controls.Add(this.usernameInput);
             this.Controls.Add(this.label1);
             this.Name = "Register";
-            this.Text = "Register";
+            this.Text = "TravelBuddy - Registracija";
             this.ResumeLayout(false);
             this.PerformLayout();
 

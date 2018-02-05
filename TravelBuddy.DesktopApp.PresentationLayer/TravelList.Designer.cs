@@ -42,6 +42,7 @@
             this.travelListBox.Name = "travelListBox";
             this.travelListBox.Size = new System.Drawing.Size(289, 144);
             this.travelListBox.TabIndex = 0;
+            this.travelListBox.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.travelListBox_MouseDoubleClick);
             // 
             // addTravelBtn
             // 

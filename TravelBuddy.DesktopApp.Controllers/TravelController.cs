@@ -23,8 +23,79 @@ namespace TravelBuddy.DesktopApp.Controllers
 
         public void OpenAddTravelWindow()
         {
-            var addTravelView =_formsFactory.CreateAddTravelView(this);
-            addTravelView.ShowModaless();
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var currencyRepository = RepositoriesFactory.CreateCurrencyRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var currencyList = new List<Currency>(currencyRepository.GetAll());
+
+                var addTravelView = _formsFactory.CreateAddTravelView(this, currencyList);
+                addTravelView.ShowModaless();
+
+                unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
+        public void EditTravel(EditTravelViewModel travelModel)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var currencyRepository = RepositoriesFactory.CreateCurrencyRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var currencyList = new List<Currency>(currencyRepository.GetAll());
+
+                var editTravelView = _formsFactory.CreateEditTravelView(this, travelModel, currencyList);
+                editTravelView.ShowModaless();
+
+                unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
+        }
+
+        public void SaveEditedTravel(EditTravelViewModel travelModel)
+        {
+            var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+            var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
+
+            try
+            {
+                unitOfWork.BeginTransaction();
+
+                var travel = travelRepository.GetTravel(travelModel.Id);
+
+                travel.Name = travelModel.Name;
+                travel.Description = travelModel.Description;
+                travel.DateStart = travelModel.DateStart;
+                travel.DateEnd = travelModel.DateEnd;
+                travel.Budget = travelModel.Budget;
+
+                travelRepository.UpdateTravel(travel);
+
+                unitOfWork.Commit();
+            }
+            catch (Exception ex)
+            {
+                unitOfWork.Rollback();
+
+                MessageBox.Show(ex.Message, "TravelBuddy");
+            }
         }
 
         public void AddTravel(AddTravelViewModel model)

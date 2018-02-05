@@ -38,6 +38,7 @@ namespace TravelBuddy.DesktopApp.Controllers
             {
                 unitOfWork.BeginTransaction();
                 currencyRepository.CreateCurrenciesIfNoneExist();
+
                 unitOfWork.Commit();
             }
             catch (Exception ex)
@@ -141,7 +142,7 @@ namespace TravelBuddy.DesktopApp.Controllers
                 unitOfWork.BeginTransaction();
 
                 var user = userRepository.GetUser(LoggedInUserId);
-                var travels = user.Travels;
+                var travels = new List<Travel>(user.Travels);
 
                 unitOfWork.Commit();
 
