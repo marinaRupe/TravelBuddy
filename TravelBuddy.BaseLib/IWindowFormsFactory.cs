@@ -21,9 +21,11 @@ namespace TravelBuddy.BaseLib
         IEditTravelView CreateEditTravelView(ITravelController travelController, EditTravelViewModel model, IList<Currency> currencyList);
         IAddTravelView CreateAddTravelView(ITravelController travelController, IList<Currency> currencyList);
 
-        ITravelItemListView CreateTravelItemListView(ITravelController travelController, IList<TravelItem> travelItemList);
-        ITravelActivityListView CreateTravelActivityListView(ITravelController travelController, IList<TravelActivity> travelActivityList);
-        IPreliminaryActivityListView CreatePreliminaryActivityListView(ITravelController travelController,IList<PreliminaryActivity> preliminaryActivityList);
-        ICostListView CreateCostListView(ITravelController travelController, IList<TravelActivityWithCost> costList);
+        ITravelItemListView CreateTravelItemListView(ITravelController travelController, IList<TravelItem> travelItemList, Guid travelId);
+        ITravelActivityListView CreateTravelActivityListView(ITravelController travelController, IList<TravelActivity> travelActivityList, Guid travelId);
+        IPreliminaryActivityListView CreatePreliminaryActivityListView(ITravelController travelController,IList<PreliminaryActivity> preliminaryActivityList, Guid travelId);
+        ICostListView CreateCostListView(ITravelController travelController, IList<TravelActivityWithCost> costList, Guid travelId);
+
+        IAddTravelItemView CreateAddTravelItemView(ITravelController travelController, Guid travelId);
     }
 }

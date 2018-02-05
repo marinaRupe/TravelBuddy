@@ -17,10 +17,12 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
     {
         private readonly ITravelController _travelController;
         private readonly IList<TravelActivityWithCost> _costList;
-        public CostList(ITravelController travelController, IList<TravelActivityWithCost> costList)
+        private readonly Guid _travelId;
+        public CostList(ITravelController travelController, IList<TravelActivityWithCost> costList, Guid travelId)
         {
             _travelController = travelController;
             _costList = costList;
+            _travelId = travelId;
 
             InitializeComponent();
         }

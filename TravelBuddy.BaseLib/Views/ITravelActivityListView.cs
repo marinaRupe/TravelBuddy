@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelBuddy.BaseLib.Views
 {
-    public interface ITravelActivityListView
+    public interface ITravelActivityListView : IView
     {
-        void ShowModaless();
     }
 }

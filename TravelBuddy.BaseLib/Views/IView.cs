@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TravelBuddy.BaseLib.Views;
 
-namespace TravelBuddy.BaseLib
+namespace TravelBuddy.BaseLib.Views
 {
-    public interface IMainView : IView
+    public interface IView
     {
+        void ShowModaless();
     }
 }

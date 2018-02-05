@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TravelBuddy.BaseLib;
 using TravelBuddy.BaseLib.Views;
+using TravelBuddy.DesktopApp.PresentationLayer.TravelLists;
 using TravelBuddy.DesktopApp.ViewModels;
 using TravelBuddy.Models;
 using TravelBuddy.Models.Repositories;
@@ -51,26 +52,31 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
         }
 
         public ITravelItemListView CreateTravelItemListView(ITravelController travelController,
-            IList<TravelItem> travelItemList)
+            IList<TravelItem> travelItemList, Guid travelId)
         {
-            return new TravelItemList(travelController, travelItemList);
+            return new TravelItemList(travelController, travelItemList, travelId);
         }
 
         public ITravelActivityListView CreateTravelActivityListView(ITravelController travelController,
-            IList<TravelActivity> travelActivityList)
+            IList<TravelActivity> travelActivityList, Guid travelId)
         {
-            return new TravelActivityList(travelController, travelActivityList);
+            return new TravelActivityList(travelController, travelActivityList, travelId);
         }
 
         public IPreliminaryActivityListView CreatePreliminaryActivityListView(ITravelController travelController,
-            IList<PreliminaryActivity> preliminaryActivityList)
+            IList<PreliminaryActivity> preliminaryActivityList, Guid travelId)
         {
-            return new PreliminaryActivityList(travelController, preliminaryActivityList);
+            return new PreliminaryActivityList(travelController, preliminaryActivityList, travelId);
         }
 
-        public ICostListView CreateCostListView(ITravelController travelController, IList<TravelActivityWithCost> costList)
+        public ICostListView CreateCostListView(ITravelController travelController, IList<TravelActivityWithCost> costList, Guid travelId)
         {
-            return new CostList(travelController, costList);
+            return new CostList(travelController, costList, travelId);
+        }
+
+        public IAddTravelItemView CreateAddTravelItemView(ITravelController travelController, Guid travelId)
+        {
+            return new AddTravelItem(travelController, travelId);
         }
     }
 }

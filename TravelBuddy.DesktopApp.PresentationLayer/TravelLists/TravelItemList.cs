@@ -17,10 +17,12 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
     {
         private readonly ITravelController _travelController;
         private readonly IList<TravelItem> _travelItemList;
-        public TravelItemList(ITravelController travelController, IList<TravelItem> travelItemList)
+        private readonly Guid _travelId;
+        public TravelItemList(ITravelController travelController, IList<TravelItem> travelItemList, Guid travelId)
         {
             _travelController = travelController;
             _travelItemList = travelItemList;
+            _travelId = travelId;
 
             InitializeComponent();
         }
@@ -36,6 +38,11 @@ namespace TravelBuddy.DesktopApp.PresentationLayer
             UpdateList();
 
             Show();
+        }
+
+        private void addButton_Click(object sender, EventArgs e)
+        {
+            _travelController.OpenAddTravelItemWindow(_travelId);
         }
     }
 }
