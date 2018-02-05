@@ -107,8 +107,9 @@ namespace TravelBuddy.DesktopApp.Controllers
                 {
                     Username = username,
                     Email = email,
-                    Password = password
                 };
+
+                user.SetPassword(password);
 
                 userRepository.AddUser(user);
                 LoggedInUserId = user.Id;
