@@ -21,8 +21,8 @@ namespace TravelBuddy.WebApp.Models.TravelViewModels
             DateStart = travel.DateStart;
             DateEnd = travel.DateEnd;
             Description = travel.Description;
-            BudgetValue = travel.Budget.Value;
-            BudgetCurrencyId = travel.Budget.Currency.Id;
+            BudgetValue = travel.Budget == null ? 0 : travel.Budget.Value;
+            BudgetCurrencyId = (travel.Budget == null || travel.Budget.Currency == null) ? default(Guid) : travel.Budget.Currency.Id;
         }
 
         public override Travel ToTravel()

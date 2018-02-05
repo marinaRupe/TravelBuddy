@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,6 +89,7 @@ namespace TravelBuddy.WebApp.Controllers
 
             unitOfWork.BeginTransaction();
             var viewModel = new EditTravelViewModel(travelRepository.GetTravel(id));
+            viewModel.Id = id;
             currencyRepository.CreateCurrenciesIfNoneExist();
             viewModel.CurrencyOptions = currencyRepository.GetAll();
             unitOfWork.Commit();
@@ -98,15 +100,18 @@ namespace TravelBuddy.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditTravelViewModel viewModel)
         {
-            var travel = viewModel.ToTravel();
             var user = await GetCurrentDomainUserAsync();
             var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
-            var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
             var travelRepository = RepositoriesFactory.CreateTravelRepository(unitOfWork);
             var currencyRepository = RepositoriesFactory.CreateCurrencyRepository(unitOfWork);
 
             unitOfWork.BeginTransaction();
+            var travel = travelRepository.GetTravel(viewModel.Id);
             var currency = currencyRepository.GetById(viewModel.BudgetCurrencyId);
+            travel.Name = viewModel.Name;
+            travel.DateStart = viewModel.DateStart;
+            travel.DateEnd = viewModel.DateEnd;
+            travel.Description = viewModel.Description;
             if (viewModel.BudgetValue > 0 && currency != null)
             {
                 travel.Budget = new MoneyValue
