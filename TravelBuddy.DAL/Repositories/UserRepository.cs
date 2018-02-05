@@ -8,6 +8,7 @@ using NHibernate.Criterion;
 using NHibernate.Linq;
 using System.Linq;
 using TravelBuddy.DAL.Extensions;
+using TravelBuddy.Models.Exceptions;
 
 namespace TravelBuddy.DAL.Repositories
 {
@@ -28,6 +29,14 @@ namespace TravelBuddy.DAL.Repositories
 
         public void AddUser(User user)
         {
+            if (GetUserByEmail(user.Email) != null)
+            {
+                throw new DuplicateUserException("Korisnik s navedonom adresom elektroničke poše već postoji!");
+            }
+            if (GetUserByUsername(user.Username) != null)
+            {
+                throw new DuplicateUserException("Korisničko ime je zauzeto!");
+            }
             Session.Save(user);
         }
 
@@ -64,7 +73,30 @@ namespace TravelBuddy.DAL.Repositories
 
         public bool DoesUserExist(string email = null, string username = null)
         {
-            throw new NotImplementedException();
+            int count = 0;
+            if (email == null)
+            {
+                count = Session.QueryOver<User>()
+                    .Where(u => u.Username == username)
+                    .RowCount();
+            }
+            else if (username == null)
+            {
+                count = Session.QueryOver<User>()
+                    .WhereEqualInsensitive(u => u.Email, email)
+                    .RowCount();
+            }
+            else
+            {
+                count = Session.QueryOver<User>()
+                    .Where(Restrictions.And(
+                        Restrictions.Eq(
+                            Projections.SqlFunction("lower", NHibernateUtil.String, Projections.Property("Email")),
+                            email?.ToLower()),
+                        Restrictions.Where<User>(u => u.Username == username)))
+                    .RowCount();
+            }
+            return count > 0;
         }
     }
 }

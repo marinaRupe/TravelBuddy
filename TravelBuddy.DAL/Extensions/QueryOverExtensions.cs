@@ -13,6 +13,10 @@ namespace TravelBuddy.DAL.Extensions
         /// </summary>
         public static IQueryOver<T, TU> WhereEqualInsensitive<T, TU>(this IQueryOver<T, TU> queryOver, Expression<Func<T, object>> path, string value)
         {
+            if (value == null)
+            {
+                value = "";
+            }
             return queryOver.Where(Restrictions.Eq(Projections.SqlFunction("lower", NHibernateUtil.String, Projections.Property(path)), value.ToLower()));
         }
     }

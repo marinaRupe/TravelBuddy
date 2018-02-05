@@ -17,6 +17,7 @@ using TravelBuddy.DAL;
 using TravelBuddy.Models.Repositories;
 using TravelBuddy.Models;
 using TravelBuddy.BaseLib.Factories;
+using TravelBuddy.Models.Exceptions;
 
 namespace TravelBuddy.WebApp.Controllers
 {
@@ -46,8 +47,10 @@ namespace TravelBuddy.WebApp.Controllers
             var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
             var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
             unitOfWork.BeginTransaction();
+            var exists = userRepository.DoesUserExist(email: email, username: username);
             unitOfWork.Commit();
-            return false;
+            _logger.LogInformation($"Checking if domain user exists... {exists}");
+            return exists;
         }
 
         [TempData]
@@ -71,19 +74,27 @@ namespace TravelBuddy.WebApp.Controllers
         {
             ViewData["ReturnUrl"] = returnUrl;
 
-            var exists = DomainUserExists(model.Username, model.Email);
-
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && DomainUserExists(model.Username, model.Email))
             {
+                // check domain model user
+                var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+                var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
+                unitOfWork.BeginTransaction();
+                var domainUser = userRepository.GetUserByEmail(model.Email);
+                var correctPassword = domainUser.IsSamePassword(model.Password);
+                unitOfWork.Commit();
+                if (!correctPassword)
+                {
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    _logger.LogInformation($"Incorrect password by {domainUser.Username}");
+                    return View(model);
+                }
+
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(domainUser.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    // check domain user password
-                    //_unitOfWork.BeginTransaction();
-                    //var domainUser = _userRepository.GetUserByEmail(model.Email);
-
                     _logger.LogInformation("User logged in.");
                     return RedirectToLocal(returnUrl);
                 }
@@ -238,19 +249,32 @@ namespace TravelBuddy.WebApp.Controllers
         public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
         {
             ViewData["ReturnUrl"] = returnUrl;
+
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
 
-                // create a domain model User
-                var domainUser = new User(model.Username, model.Email, model.Password);
-                //_unitOfWork.BeginTransaction();
-                //_userRepository.AddUser(domainUser);
-                //_unitOfWork.Commit();
-
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    // create a domain model User
+                    var domainUser = new User(model.Username, model.Email, model.Password);
+                    var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+                    var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
+                    unitOfWork.BeginTransaction();
+                    try
+                    {
+                        userRepository.AddUser(domainUser);
+                        unitOfWork.Commit();
+                    }
+                    catch (DuplicateUserException ex)
+                    {
+                        unitOfWork.Rollback();
+                        await _userManager.DeleteAsync(user);
+                        ModelState.AddModelError(string.Empty, ex.Message);
+                        return View(model);
+                    }
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
@@ -442,14 +466,15 @@ namespace TravelBuddy.WebApp.Controllers
                 return RedirectToAction(nameof(ResetPasswordConfirmation));
             }
             var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
-            if (result.Succeeded)
+            if (result.Succeeded && DomainUserExists(null, model.Email))
             {
-                // change domain user password
-                //_unitOfWork.BeginTransaction();
-                //var domainUser = _userRepository.GetUserByEmail(model.Email);
-                //domainUser.Password = model.Password;
-                //_userRepository.UpdateUser(domainUser);
-                //_unitOfWork.Commit();
+                // update domain model User
+                var unitOfWork = UnitOfWorkFactory.CreateUnitOfWork();
+                var userRepository = RepositoriesFactory.CreateUserRepository(unitOfWork);
+                unitOfWork.BeginTransaction();
+                var domainUser = userRepository.GetUserByEmail(model.Email);
+                domainUser.SetPassword(model.Password);
+                unitOfWork.Commit();
 
                 return RedirectToAction(nameof(ResetPasswordConfirmation));
             }

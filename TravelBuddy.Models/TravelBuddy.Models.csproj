@@ -45,6 +45,7 @@
     <Compile Include="Currency.cs" />
     <Compile Include="EntityBase.cs" />
     <Compile Include="Enums\TravelStatus.cs" />
+    <Compile Include="Exceptions\DuplicateUserException.cs" />
     <Compile Include="Interfaces\IActivity.cs" />
     <Compile Include="Interfaces\ICostable.cs" />
     <Compile Include="Interfaces\ILocatable.cs" />
